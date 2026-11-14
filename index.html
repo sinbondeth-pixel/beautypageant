@@ -1,0 +1,768 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Beauty Queen Academy | 100 Q&A</title>
+
+<style>
+
+/* ===== WEBSITE COLORS ===== */
+:root {
+  --bg: #fff7fc;
+  --card: #fff;
+  --text: #30243b;
+  --muted: #756b80;
+  --pink: #df3d91;
+  --purple: #7438b5;
+  --gold: #d5a23e;
+  --border: #efd9e8;
+}
+
+/* ===== DARK MODE ===== */
+body.dark {
+  --bg: #17111f;
+  --card: #292037;
+  --text: #f8f1ff;
+  --muted: #c9bed2;
+  --border: #4c3b57;
+}
+
+/* ===== GENERAL STYLE ===== */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, "Noto Sans Khmer", sans-serif;
+}
+
+/* ===== HEADER BACKGROUND IMAGE ===== */
+header {
+  text-align: center;
+  color: white;
+  padding: 100px 20px;
+  min-height: 350px;
+
+  background-image:
+    linear-gradient(
+      rgba(53, 10, 83, 0.65),
+      rgba(187, 32, 113, 0.55)
+    ),
+    url("Image.png");
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ===== HEADER TITLE ===== */
+header h1 {
+  font-size: clamp(30px, 5vw, 55px);
+  margin: 12px 0;
+  text-shadow: 2px 3px 10px rgba(0,0,0,0.6);
+}
+
+/* ===== HEADER PARAGRAPH ===== */
+header p {
+  line-height: 1.8;
+  text-shadow: 1px 2px 5px rgba(0,0,0,0.6);
+}
+
+/* ===== NAVIGATION BAR ===== */
+nav {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--card);
+  padding: 12px;
+
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 9px;
+
+  box-shadow: 0 4px 16px #0002;
+}
+
+/* ===== BUTTONS AND INPUTS ===== */
+button, select, input {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  border-radius: 10px;
+  background: var(--pink);
+  color: white;
+  padding: 11px 14px;
+  cursor: pointer;
+}
+
+/* KEEP YOUR REMAINING CSS BELOW THIS LINE */
+
+
+button:hover{filter:brightness(.92)}
+button:focus-visible,input:focus-visible,select:focus-visible{
+ outline:3px solid var(--gold);outline-offset:2px;
+}
+.secondary{background:var(--purple)}
+.gold{background:var(--gold);color:#2d210b}
+main{max-width:1200px;margin:auto;padding:22px 16px}
+.intro{text-align:center;line-height:1.8}
+.intro h2{color:var(--pink)}
+.stats{
+ display:grid;grid-template-columns:repeat(3,1fr);
+ gap:12px;margin:25px 0;
+}
+.stat{
+ background:var(--card);text-align:center;padding:20px 8px;
+ border-radius:15px;box-shadow:0 5px 20px #0001;
+}
+.stat strong{
+ display:block;color:var(--pink);font-size:30px;margin-bottom:6px;
+}
+.search{
+ width:100%;padding:16px;border:2px solid var(--border);
+ border-radius:12px;background:var(--card);color:var(--text);
+ margin-bottom:20px;
+}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.filters button{background:var(--purple)}
+.filters button.active{background:var(--gold);color:#2d210b}
+.grid{
+ display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,340px),1fr));
+ gap:20px;
+}
+.card{
+ background:var(--card);padding:22px;border-radius:17px;
+ border-top:4px solid var(--gold);box-shadow:0 5px 22px #0001;
+}
+.category{font-size:13px;color:var(--pink);font-weight:bold}
+.card h3{font-size:19px;line-height:1.7}
+.answer{
+ background:var(--bg);padding:16px;border-radius:12px;
+ line-height:1.9;white-space:pre-line;margin:15px 0;
+}
+.actions{display:flex;flex-wrap:wrap;gap:8px}
+.practice{
+ background:var(--card);text-align:center;border-radius:18px;
+ padding:30px 18px;margin-top:45px;
+}
+.practice-question{font-size:21px;line-height:1.8;margin:20px}
+.timer{font-size:60px;color:var(--pink);font-weight:bold;margin:15px}
+select{
+ padding:12px;background:var(--card);color:var(--text);
+ border:1px solid var(--border);border-radius:10px;
+}
+.practice-actions{
+ display:flex;flex-wrap:wrap;justify-content:center;
+ gap:10px;margin:20px;
+}
+footer{
+ text-align:center;background:#271736;color:white;
+ padding:28px;margin-top:40px;line-height:1.8;
+}
+@media(max-width:600px){
+ header{padding:38px 12px}
+ nav button{padding:9px;font-size:12px}
+ .stat strong{font-size:24px}
+}
+</style>
+</head>
+<body>
+
+<header>
+ <div style="font-size:55px">👑</div>
+ <h1>BEAUTY QUEEN ACADEMY</h1>
+ <p>Miss Universe • Miss Cosmo • Miss World</p>
+ <p>🇬🇧 English | 🇰🇭 Khmer</p>
+ <p>100 Questions • 100 Answers • Your Journey to the Crown</p>
+</header>
+
+<nav>
+ <button onclick="showAll()">🏠 Home</button>
+ <button onclick="showFavorites()">❤️ Favorites</button>
+ <button onclick="document.getElementById('practice').scrollIntoView()">🎤 Practice</button>
+ <button onclick="toggleLanguage()">🌐 EN / KH</button>
+ <button onclick="toggleDark()">🌙 Dark Mode</button>
+</nav>
+
+<main>
+ <section class="intro">
+  <h2>✨ Believe in Your Voice ✨</h2>
+  <p>Study meaningful answers and practice with confidence.</p>
+ </section>
+
+ <div class="stats">
+  <div class="stat"><strong id="total">100</strong>Questions</div>
+  <div class="stat"><strong id="favoriteCount">0</strong>Favorites</div>
+  <div class="stat"><strong id="shownCount">100</strong>Showing</div>
+ </div>
+
+ <input id="search" class="search"
+  placeholder="🔍 Search English or Khmer..."
+  oninput="renderQuestions()">
+
+ <div id="filters" class="filters"></div>
+ <section id="questions" class="grid"></section>
+
+ <section id="practice" class="practice">
+  <h2>🎤 Final Round Interview Practice</h2>
+  <div id="practiceQuestion" class="practice-question">
+   Click New Question to begin.
+  </div>
+  <div id="timer" class="timer">00:30</div>
+
+  <select id="duration" onchange="resetTimer()">
+   <option value="30">30 Seconds</option>
+   <option value="60">60 Seconds</option>
+   <option value="90">90 Seconds</option>
+  </select>
+
+  <div class="practice-actions">
+   <button onclick="newQuestion()">New Question</button>
+   <button onclick="startTimer()">Start Timer</button>
+   <button class="secondary" onclick="resetTimer()">Reset</button>
+  </div>
+  <p id="timerMessage" aria-live="polite"></p>
+ </section>
+</main>
+
+<footer>
+ 👑 BEAUTY QUEEN ACADEMY
+ <p>Your circumstances do not define your future.</p>
+</footer>
+
+<script>
+const headerImages = [
+    "Image.png",
+    "Image 1.png",
+    "Image 1 (1).png"
+  ];
+
+  let currentHeader = 0;
+
+  const queenHeader =
+    document.querySelector(".queen-header");
+
+  function changeHeaderImage() {
+    if (!queenHeader) return;
+
+    queenHeader.style.backgroundImage = `
+      linear-gradient(
+        rgba(53, 10, 83, 0.65),
+        rgba(187, 32, 113, 0.55)
+      ),
+      url("${headerImages[currentHeader]}")
+    `;
+
+    currentHeader =
+      (currentHeader + 1) % headerImages.length;
+  }
+
+  if (queenHeader) {
+    changeHeaderImage();
+    setInterval(changeHeaderImage, 5000);
+  }
+"use strict";
+
+/*
+ Each entry:
+ [category, English question, Khmer question,
+  English answer, Khmer answer]
+*/
+
+const raw = [
+
+/* ===== PERSONAL: 1–10 ===== */
+
+["Personal",
+"Why do you want to become a beauty queen?",
+"ហេតុអ្វីអ្នកចង់ក្លាយជាបវរកញ្ញា?",
+"I want to become a beauty queen because I believe a crown should represent responsibility, not only beauty. Coming from a humble background, I understand how difficult it can be to follow a dream without enough opportunities. I want to use this platform to support girls' education and encourage young people to believe in themselves. My greatest hope is not simply to be remembered for winning, but to be remembered for helping others move forward.",
+"នាងខ្ញុំចង់ក្លាយជាបវរកញ្ញា ព្រោះនាងខ្ញុំជឿថា មកុដគួរតំណាងឱ្យការទទួលខុសត្រូវ មិនមែនត្រឹមតែសម្រស់ឡើយ។ ដោយមកពីគ្រួសារដែលមានជីវភាពខ្វះខាត នាងខ្ញុំយល់ថាការដើរតាមក្តីសុបិនដោយខ្វះឱកាសគឺលំបាកយ៉ាងណា។ នាងខ្ញុំចង់ប្រើវេទិកានេះដើម្បីគាំទ្រការអប់រំក្មេងស្រី និងលើកទឹកចិត្តយុវជនឱ្យជឿលើខ្លួនឯង។ ក្តីសង្ឃឹមធំបំផុតរបស់នាងខ្ញុំមិនមែនគ្រាន់តែឱ្យគេចងចាំថាបានឈ្នះទេ ប៉ុន្តែឱ្យគេចងចាំថានាងខ្ញុំបានជួយអ្នកដទៃឱ្យឈានទៅមុខ។"],
+
+["Personal",
+"Why should you be the next Miss Universe?",
+"ហេតុអ្វីអ្នកគួរតែក្លាយជា Miss Universe បន្ទាប់?",
+"I believe I can be the next Miss Universe because I am ready to turn my experiences into service. I do not claim to be more beautiful or more deserving than every woman on this stage. What I can offer is determination, kindness, and a genuine commitment to education. I want to represent a woman who has faced difficulties but continues to believe in possibility. A crown would give me a greater platform to help girls see that their beginnings do not have to determine their future.",
+"នាងខ្ញុំជឿថា នាងខ្ញុំអាចក្លាយជា Miss Universe បន្ទាប់ ព្រោះនាងខ្ញុំត្រៀមខ្លួនប្រែក្លាយបទពិសោធជីវិតទៅជាការបម្រើអ្នកដទៃ។ នាងខ្ញុំមិនអះអាងថាស្រស់ស្អាតជាង ឬស័ក្តិសមជាងស្ត្រីគ្រប់រូបនៅលើឆាកនេះទេ។ អ្វីដែលនាងខ្ញុំអាចផ្តល់បានគឺការតាំងចិត្ត ក្តីមេត្តា និងការប្តេជ្ញាចិត្តពិតប្រាកដចំពោះការអប់រំ។ នាងខ្ញុំចង់តំណាងឱ្យស្ត្រីដែលធ្លាប់ឆ្លងកាត់ការលំបាក ប៉ុន្តែនៅតែជឿថាអនាគតអាចប្រសើរឡើង។ មកុដនឹងផ្តល់វេទិកាធំជាងមុនដើម្បីជួយក្មេងស្រីឱ្យយល់ថាចំណុចចាប់ផ្តើមមិនកំណត់អនាគតរបស់ពួកគេឡើយ។"],
+
+["Personal",
+"What makes you different from other contestants?",
+"តើអ្វីធ្វើឱ្យអ្នកខុសប្លែកពីបេក្ខនារីដទៃ?",
+"Every contestant has a valuable story, and I respect the courage it takes to stand here. What makes me different is my personal journey and the lessons it has taught me. I have learned to appreciate small opportunities, remain patient during difficult times, and keep working even when progress is slow. I do not need to compare my worth with another woman's achievements. I want to bring my own experiences to this competition and show that authenticity can be a powerful form of beauty.",
+"បេក្ខនារីគ្រប់រូបសុទ្ធតែមានរឿងរ៉ាវដ៏មានតម្លៃ ហើយនាងខ្ញុំគោរពភាពក្លាហានរបស់ពួកគេក្នុងការឈរនៅទីនេះ។ អ្វីដែលធ្វើឱ្យនាងខ្ញុំខុសប្លែកគឺដំណើរជីវិតផ្ទាល់ខ្លួន និងមេរៀនដែលនាងខ្ញុំបានរៀន។ នាងខ្ញុំបានរៀនឱ្យតម្លៃឱកាសតូចៗ មានការអត់ធ្មត់ក្នុងពេលលំបាក និងបន្តខិតខំទោះបីការរីកចម្រើនយឺតក៏ដោយ។ នាងខ្ញុំមិនចាំបាច់ប្រៀបធៀបតម្លៃខ្លួនឯងជាមួយសមិទ្ធផលរបស់ស្ត្រីដទៃទេ។ នាងខ្ញុំចង់នាំបទពិសោធផ្ទាល់ខ្លួនមកកាន់ការប្រកួតនេះ និងបង្ហាញថាភាពជាខ្លួនឯងពិតប្រាកដអាចជាសម្រស់ដ៏មានអំណាច។"],
+
+["Personal",
+"What does true beauty mean to you?",
+"តើសម្រស់ពិតប្រាកដមានន័យដូចម្តេចចំពោះអ្នក?",
+"True beauty is not measured only by a face, a body, or a beautiful dress. For me, it is reflected in kindness, honesty, and the way we treat people who cannot offer us anything in return. Physical beauty may attract attention, but character creates lasting respect. I want to be a woman who makes others feel valued and included. If my presence can encourage someone to believe in themselves, that is a kind of beauty I would be proud to carry.",
+"សម្រស់ពិតប្រាកដមិនត្រូវបានវាស់វែងត្រឹមមុខមាត់ រាងកាយ ឬសម្លៀកបំពាក់ស្រស់ស្អាតនោះទេ។ សម្រាប់នាងខ្ញុំ វាបង្ហាញតាមរយៈក្តីមេត្តា ភាពស្មោះត្រង់ និងរបៀបដែលយើងប្រព្រឹត្តចំពោះមនុស្សដែលមិនអាចផ្តល់ផលប្រយោជន៍អ្វីត្រឡប់មកវិញ។ សម្រស់ខាងក្រៅអាចទាក់ទាញការចាប់អារម្មណ៍ ប៉ុន្តែចរិតលក្ខណៈបង្កើតការគោរពយូរអង្វែង។ នាងខ្ញុំចង់ក្លាយជាស្ត្រីដែលធ្វើឱ្យអ្នកដទៃមានអារម្មណ៍ថាខ្លួនមានតម្លៃ និងត្រូវបានទទួលយក។ ប្រសិនបើវត្តមានរបស់នាងខ្ញុំអាចជួយឱ្យនរណាម្នាក់ជឿលើខ្លួនឯង នោះជាសម្រស់ដែលនាងខ្ញុំមានមោទនភាព។"],
+
+["Personal",
+"What is your greatest strength?",
+"តើចំណុចខ្លាំងបំផុតរបស់អ្នកគឺជាអ្វី?",
+"My greatest strength is determination. I understand that success does not happen overnight and that every meaningful goal requires patience. When I face disappointment, I try to learn from it instead of allowing it to stop me. I also believe strength includes knowing when to ask for help and when to listen to advice. I am not strong because I never fall. I am strong because I am willing to stand up again, improve myself, and continue working toward something meaningful.",
+"ចំណុចខ្លាំងបំផុតរបស់នាងខ្ញុំគឺការតាំងចិត្ត។ នាងខ្ញុំយល់ថាភាពជោគជ័យមិនកើតឡើងក្នុងមួយយប់ទេ ហើយគោលដៅដ៏មានអត្ថន័យត្រូវការការអត់ធ្មត់។ នៅពេលជួបការខកចិត្ត នាងខ្ញុំព្យាយាមរៀនពីវា ជាជាងអនុញ្ញាតឱ្យវាបញ្ឈប់ដំណើររបស់ខ្លួន។ នាងខ្ញុំក៏ជឿថាភាពរឹងមាំរួមមានការដឹងថាពេលណាគួរសុំជំនួយ និងពេលណាគួរស្តាប់ដំបូន្មាន។ នាងខ្ញុំមិនរឹងមាំដោយសារមិនដែលដួលទេ ប៉ុន្តែដោយសារមានឆន្ទៈក្រោកឈរឡើងវិញ កែលម្អខ្លួន និងបន្តខិតខំឆ្ពោះទៅរកអ្វីដែលមានអត្ថន័យ។"],
+
+["Personal",
+"What is your biggest weakness?",
+"តើចំណុចខ្សោយធំបំផុតរបស់អ្នកគឺជាអ្វី?",
+"One weakness I continue to work on is putting too much pressure on myself. When something matters deeply to me, I sometimes expect every detail to be perfect. However, I have learned that perfection is not the same as progress. Today, I try to prepare carefully, accept constructive feedback, and forgive myself when I make mistakes. Recognizing a weakness is not something to be ashamed of. It is an opportunity to become more self-aware and grow into a better person.",
+"ចំណុចខ្សោយមួយដែលនាងខ្ញុំកំពុងកែលម្អគឺការដាក់សម្ពាធលើខ្លួនឯងខ្លាំងពេក។ នៅពេលអ្វីមួយមានសារៈសំខាន់ចំពោះនាងខ្ញុំ នាងខ្ញុំពេលខ្លះរំពឹងថាព័ត៌មានលម្អិតគ្រប់យ៉ាងត្រូវតែល្អឥតខ្ចោះ។ ប៉ុន្តែនាងខ្ញុំបានរៀនថាភាពល្អឥតខ្ចោះមិនដូចការរីកចម្រើនទេ។ សព្វថ្ងៃ នាងខ្ញុំព្យាយាមត្រៀមខ្លួនឱ្យបានល្អ ទទួលយកមតិកែលម្អ និងអភ័យទោសឱ្យខ្លួនឯងនៅពេលធ្វើខុស។ ការទទួលស្គាល់ចំណុចខ្សោយមិនមែនជារឿងគួរខ្មាសអៀនទេ ប៉ុន្តែជាឱកាសក្នុងការយល់ពីខ្លួនឯង និងរីកចម្រើនទៅជាមនុស្សល្អប្រសើរ។"],
+
+["Personal",
+"What does confidence mean to you?",
+"តើទំនុកចិត្តមានន័យដូចម្តេចចំពោះអ្នក?",
+"Confidence means believing that I have value even when I am still learning. It does not mean I never feel nervous or afraid. It means I can acknowledge those feelings and still choose to try. I believe many young people lose confidence because they compare their lives with carefully selected images on social media. I want to remind them that everyone has a different journey. You do not need to look like someone else or reach success at the same age to deserve respect and opportunity.",
+"ទំនុកចិត្តមានន័យថាការជឿថាខ្លួនមានតម្លៃ ទោះបីនៅកំពុងរៀនសូត្រក៏ដោយ។ វាមិនមានន័យថានាងខ្ញុំមិនដែលភ័យ ឬព្រួយបារម្ភទេ។ វាមានន័យថានាងខ្ញុំអាចទទួលស្គាល់អារម្មណ៍ទាំងនោះ ហើយនៅតែជ្រើសរើសសាកល្បង។ នាងខ្ញុំជឿថាយុវជនជាច្រើនបាត់បង់ទំនុកចិត្ត ព្រោះប្រៀបធៀបជីវិតខ្លួនជាមួយរូបភាពដែលគេជ្រើសរើសបង្ហាញលើបណ្តាញសង្គម។ នាងខ្ញុំចង់រំលឹកពួកគេថាមនុស្សគ្រប់រូបមានដំណើរជីវិតខុសៗគ្នា។ អ្នកមិនចាំបាច់មានរូបរាងដូចអ្នកដទៃ ឬជោគជ័យនៅអាយុដូចគ្នា ដើម្បីសមនឹងទទួលបានការគោរព និងឱកាសឡើយ។"],
+
+["Personal",
+"Who inspires you the most?",
+"តើនរណាជាអ្នកបំផុសគំនិតដល់អ្នកខ្លាំងបំផុត?",
+"My parents inspire me because they have shown me the meaning of sacrifice and responsibility. Their hard work has taught me to appreciate education and never take an opportunity for granted. When I feel discouraged, I remember that many people have supported my journey in ways both big and small. Their example reminds me that success is not only personal. It is also about honoring the people who helped us and using what we achieve to support others.",
+"ឪពុកម្តាយរបស់នាងខ្ញុំជាអ្នកបំផុសគំនិត ព្រោះពួកគាត់បានបង្ហាញអត្ថន័យនៃការលះបង់ និងការទទួលខុសត្រូវ។ ការខិតខំរបស់ពួកគាត់បានបង្រៀននាងខ្ញុំឱ្យឱ្យតម្លៃការអប់រំ និងមិនមើលរំលងឱកាសណាមួយ។ នៅពេលនាងខ្ញុំបាក់ទឹកចិត្ត នាងខ្ញុំរំលឹកថាមានមនុស្សជាច្រើនបានគាំទ្រដំណើររបស់នាងខ្ញុំ ទាំងតាមរបៀបធំ និងតូច។ គំរូរបស់ពួកគាត់រំលឹកនាងខ្ញុំថាភាពជោគជ័យមិនមែនជារឿងផ្ទាល់ខ្លួនប៉ុណ្ណោះទេ ប៉ុន្តែក៏ជាការដឹងគុណអ្នកដែលបានជួយយើង និងប្រើសមិទ្ធផលរបស់យើងដើម្បីគាំទ្រអ្នកដទៃ។"],
+
+["Personal",
+"What is your biggest dream?",
+"តើក្តីសុបិនធំបំផុតរបស់អ្នកគឺជាអ្វី?",
+"My biggest dream is to help more girls receive an education and believe in their potential. I know that talent can exist anywhere, but opportunity is not always equally available. I want to use my voice and future achievements to support programs that make learning more accessible. Becoming Miss Universe would be a beautiful milestone, but I do not want my dream to end with a crown. I want it to become the beginning of work that makes a meaningful difference in other people's lives.",
+"ក្តីសុបិនធំបំផុតរបស់នាងខ្ញុំគឺជួយឱ្យក្មេងស្រីកាន់តែច្រើនទទួលបានការអប់រំ និងជឿលើសក្តានុពលរបស់ខ្លួន។ នាងខ្ញុំដឹងថាទេពកោសល្យអាចមាននៅគ្រប់ទីកន្លែង ប៉ុន្តែឱកាសមិនតែងតែមានស្មើគ្នាទេ។ នាងខ្ញុំចង់ប្រើសំឡេង និងសមិទ្ធផលនាពេលអនាគតដើម្បីគាំទ្រកម្មវិធីដែលធ្វើឱ្យការសិក្សាកាន់តែងាយស្រួលទទួលបាន។ ការក្លាយជា Miss Universe នឹងជាសមិទ្ធផលដ៏ស្រស់ស្អាត ប៉ុន្តែនាងខ្ញុំមិនចង់ឱ្យក្តីសុបិនបញ្ចប់ត្រឹមមកុដទេ។ នាងខ្ញុំចង់ឱ្យវាក្លាយជាចំណុចចាប់ផ្តើមនៃការងារដែលបង្កើតការផ្លាស់ប្តូរដ៏មានអត្ថន័យក្នុងជីវិតអ្នកដទៃ។"],
+
+["Personal",
+"What would you tell your younger self?",
+"តើអ្នកចង់ប្រាប់អ្វីទៅខ្លួនឯងកាលពីក្មេង?",
+"I would tell my younger self not to be ashamed of where she comes from. I would remind her that having fewer resources does not mean having less value. I would encourage her to study seriously, respect her parents, and never allow fear to silence her dreams. There will be difficult days and people who doubt her, but their opinions do not have to become her future. Most importantly, I would tell her that she is enough and that every small step forward matters.",
+"នាងខ្ញុំនឹងប្រាប់ខ្លួនឯងកាលពីក្មេងថា កុំខ្មាសអៀនចំពោះប្រភពកំណើតរបស់ខ្លួន។ នាងខ្ញុំនឹងរំលឹកនាងថាការមានធនធានតិចមិនមានន័យថាមានតម្លៃតិចទេ។ នាងខ្ញុំនឹងលើកទឹកចិត្តនាងឱ្យខិតខំរៀន គោរពឪពុកម្តាយ និងកុំអនុញ្ញាតឱ្យការភ័យខ្លាចបំបិទក្តីសុបិន។ នឹងមានថ្ងៃលំបាក និងមនុស្សដែលសង្ស័យលើនាង ប៉ុន្តែមតិរបស់ពួកគេមិនចាំបាច់ក្លាយជាអនាគតរបស់នាងទេ។ អ្វីសំខាន់បំផុត នាងខ្ញុំនឹងប្រាប់នាងថានាងមានតម្លៃគ្រប់គ្រាន់ ហើយជំហានតូចៗទៅមុខសុទ្ធតែមានសារៈសំខាន់។"],
+
+/* ===== WOMEN: 11–20 ===== */
+
+["Women Empowerment",
+"What does women's empowerment mean to you?",
+"តើការផ្តល់ភាពអង់អាចដល់ស្ត្រីមានន័យដូចម្តេច?",
+"Women's empowerment means giving women the freedom, safety, knowledge, and opportunity to make decisions about their own lives. It is not about proving women are better than men. It is about ensuring that gender does not prevent someone from learning, leading, or succeeding. I believe empowerment begins in families and schools, where girls should be encouraged to ask questions and express their opinions. When women are supported, they can contribute more fully to their communities and inspire the next generation.",
+"ការផ្តល់ភាពអង់អាចដល់ស្ត្រីមានន័យថាផ្តល់សេរីភាព សុវត្ថិភាព ចំណេះដឹង និងឱកាសដល់ស្ត្រីក្នុងការសម្រេចចិត្តអំពីជីវិតរបស់ខ្លួន។ វាមិនមែនជាការបង្ហាញថាស្ត្រីល្អជាងបុរសទេ ប៉ុន្តែជាការធានាថាយេនឌ័រមិនរារាំងមនុស្សពីការរៀនសូត្រ ការដឹកនាំ ឬភាពជោគជ័យ។ នាងខ្ញុំជឿថាការផ្តល់ភាពអង់អាចចាប់ផ្តើមពីគ្រួសារ និងសាលារៀន ដែលក្មេងស្រីគួរត្រូវបានលើកទឹកចិត្តឱ្យសួរសំណួរ និងបញ្ចេញមតិ។ នៅពេលស្ត្រីទទួលបានការគាំទ្រ ពួកគេអាចចូលរួមចំណែកកាន់តែពេញលេញក្នុងសហគមន៍ និងបំផុសគំនិតដល់មនុស្សជំនាន់ក្រោយ។"],
+
+["Women Empowerment",
+"How can we achieve gender equality?",
+"តើយើងអាចសម្រេចបានសមភាពយេនឌ័រដោយរបៀបណា?",
+"We can move toward gender equality through education, fair opportunities, and respect. Children should grow up knowing that their dreams are not limited by whether they are boys or girls. Schools can challenge harmful stereotypes, workplaces can recognize talent fairly, and families can share responsibilities. Equality also requires listening to people who experience discrimination and improving systems that exclude them. I believe progress happens when women and men work together rather than seeing equality as a competition.",
+"យើងអាចឆ្ពោះទៅរកសមភាពយេនឌ័រតាមរយៈការអប់រំ ឱកាសយុត្តិធម៌ និងការគោរព។ កុមារគួរធំធាត់ដោយដឹងថាក្តីសុបិនរបស់ពួកគេមិនត្រូវបានកំណត់ដោយការជាក្មេងប្រុស ឬក្មេងស្រីឡើយ។ សាលារៀនអាចផ្លាស់ប្តូរផ្នត់គំនិតអវិជ្ជមាន កន្លែងធ្វើការអាចទទួលស្គាល់ទេពកោសល្យដោយយុត្តិធម៌ ហើយគ្រួសារអាចចែករំលែកការទទួលខុសត្រូវ។ សមភាពក៏ត្រូវការការស្តាប់អ្នកដែលប្រឈមការរើសអើង និងការកែលម្អប្រព័ន្ធដែលមិនផ្តល់ឱកាសដល់ពួកគេ។ នាងខ្ញុំជឿថាការរីកចម្រើនកើតឡើងនៅពេលស្ត្រីនិងបុរសសហការគ្នា ជាជាងចាត់ទុកសមភាពជាការប្រកួតប្រជែង។"],
+
+["Women Empowerment",
+"Can women be strong leaders?",
+"តើស្ត្រីអាចក្លាយជាអ្នកដឹកនាំដ៏រឹងមាំបានទេ?",
+"Absolutely. Leadership is not determined by gender. It is demonstrated through integrity, good decisions, responsibility, and the ability to bring people together. Women have already shown leadership in families, communities, businesses, and governments. However, many still face unfair expectations that question their abilities. I want young girls to know they do not need permission to develop their talents. A strong leader listens, learns, accepts responsibility, and creates opportunities for others to succeed.",
+"ពិតជាអាច។ ភាពជាអ្នកដឹកនាំមិនត្រូវបានកំណត់ដោយយេនឌ័រទេ។ វាត្រូវបានបង្ហាញតាមរយៈភាពស្មោះត្រង់ ការសម្រេចចិត្តល្អ ការទទួលខុសត្រូវ និងសមត្ថភាពក្នុងការរួបរួមមនុស្ស។ ស្ត្រីបានបង្ហាញភាពជាអ្នកដឹកនាំរួចហើយក្នុងគ្រួសារ សហគមន៍ អាជីវកម្ម និងរដ្ឋាភិបាល។ ប៉ុន្តែស្ត្រីជាច្រើននៅតែប្រឈមនឹងការរំពឹងទុកមិនយុត្តិធម៌ដែលសង្ស័យលើសមត្ថភាពរបស់ពួកគេ។ នាងខ្ញុំចង់ឱ្យក្មេងស្រីដឹងថាពួកគេមិនចាំបាច់រង់ចាំការអនុញ្ញាតដើម្បីអភិវឌ្ឍទេពកោសល្យឡើយ។ អ្នកដឹកនាំរឹងមាំចេះស្តាប់ រៀនសូត្រ ទទួលខុសត្រូវ និងបង្កើតឱកាសឱ្យអ្នកដទៃជោគជ័យ។"],
+
+["Women Empowerment",
+"What would you say to girls who feel powerless?",
+"តើអ្នកចង់ប្រាប់អ្វីដល់ក្មេងស្រីដែលមានអារម្មណ៍ថាខ្លួនគ្មានអំណាច?",
+"I would tell them that their feelings deserve to be heard and their future still holds possibilities. Being in a difficult situation does not mean they lack intelligence, courage, or worth. I would encourage them to seek supportive people, continue learning whenever possible, and take one achievable step at a time. We should also recognize that encouragement alone is not enough; communities must provide real safety and opportunities. Every girl deserves more than inspiring words. She deserves a fair chance.",
+"នាងខ្ញុំនឹងប្រាប់ពួកគេថាអារម្មណ៍របស់ពួកគេសមនឹងទទួលបានការស្តាប់ ហើយអនាគតនៅតែមានលទ្ធភាពល្អៗ។ ការស្ថិតក្នុងស្ថានភាពលំបាកមិនមានន័យថាពួកគេខ្វះបញ្ញា ភាពក្លាហាន ឬតម្លៃទេ។ នាងខ្ញុំនឹងលើកទឹកចិត្តពួកគេឱ្យស្វែងរកមនុស្សដែលគាំទ្រ បន្តរៀនតាមលទ្ធភាព និងឈានទៅមុខមួយជំហានម្តងៗ។ យើងក៏ត្រូវទទួលស្គាល់ថាពាក្យលើកទឹកចិត្តតែមួយមុខមិនគ្រប់គ្រាន់ទេ សហគមន៍ត្រូវផ្តល់សុវត្ថិភាព និងឱកាសពិតប្រាកដ។ ក្មេងស្រីគ្រប់រូបសមនឹងទទួលបានលើសពីពាក្យបំផុសគំនិត គឺឱកាសយុត្តិធម៌។"],
+
+["Women Empowerment",
+"How can women support one another?",
+"តើស្ត្រីអាចគាំទ្រគ្នាទៅវិញទៅមកដោយរបៀបណា?",
+"Women can support one another by sharing knowledge, celebrating achievements, and offering encouragement without unnecessary comparison. Sometimes support means recommending someone for an opportunity. Other times it means listening when she is struggling or speaking up when she is treated unfairly. I believe there is enough room for many women to succeed. Another woman's achievement does not reduce my own potential. When we help each other grow, we create stronger communities and show younger girls what meaningful solidarity looks like.",
+"ស្ត្រីអាចគាំទ្រគ្នាតាមរយៈការចែករំលែកចំណេះដឹង អបអរសមិទ្ធផល និងលើកទឹកចិត្តដោយមិនប្រៀបធៀបគ្នាដោយមិនចាំបាច់។ ពេលខ្លះការគាំទ្រមានន័យថាណែនាំនរណាម្នាក់ទៅរកឱកាស។ ពេលខ្លះទៀតមានន័យថាស្តាប់នាងនៅពេលលំបាក ឬនិយាយការពារនៅពេលនាងទទួលការប្រព្រឹត្តមិនយុត្តិធម៌។ នាងខ្ញុំជឿថាមានកន្លែងគ្រប់គ្រាន់សម្រាប់ស្ត្រីជាច្រើនទទួលបានជោគជ័យ។ សមិទ្ធផលរបស់ស្ត្រីម្នាក់មិនបន្ថយសក្តានុពលរបស់នាងខ្ញុំទេ។ នៅពេលយើងជួយគ្នារីកចម្រើន យើងបង្កើតសហគមន៍រឹងមាំ និងបង្ហាញក្មេងស្រីពីអត្ថន័យនៃសាមគ្គីភាព។"],
+
+["Women Empowerment",
+"What is the biggest challenge facing women today?",
+"តើបញ្ហាប្រឈមធំបំផុតដែលស្ត្រីកំពុងជួបប្រទះសព្វថ្ងៃគឺជាអ្វី?",
+"One major challenge is unequal access to opportunities. In different parts of the world, women may face barriers to education, safe employment, healthcare, or leadership. These problems are not identical everywhere, so solutions must respond to local realities. I believe we should listen to women's experiences rather than assume we understand them all. As a beauty queen, I would focus on encouraging education and partnerships that create practical opportunities. Equality becomes meaningful when it changes everyday lives.",
+"បញ្ហាប្រឈមធំមួយគឺការទទួលបានឱកាសមិនស្មើគ្នា។ នៅតំបន់ផ្សេងៗនៃពិភពលោក ស្ត្រីអាចប្រឈមនឹងឧបសគ្គក្នុងការអប់រំ ការងារដែលមានសុវត្ថិភាព សេវាសុខភាព ឬភាពជាអ្នកដឹកនាំ។ បញ្ហាទាំងនេះមិនដូចគ្នាគ្រប់ទីកន្លែងទេ ដូច្នេះដំណោះស្រាយត្រូវឆ្លើយតបនឹងស្ថានភាពក្នុងតំបន់។ នាងខ្ញុំជឿថាយើងគួរស្តាប់បទពិសោធរបស់ស្ត្រី ជាជាងសន្មតថាយើងយល់អំពីពួកគេទាំងអស់។ ក្នុងនាមជាបវរកញ្ញា នាងខ្ញុំនឹងផ្តោតលើការលើកកម្ពស់ការអប់រំ និងភាពជាដៃគូដែលបង្កើតឱកាសជាក់ស្តែង។ សមភាពមានអត្ថន័យនៅពេលវាផ្លាស់ប្តូរជីវិតប្រចាំថ្ងៃ។"],
+
+["Women Empowerment",
+"Should women have equal opportunities in leadership?",
+"តើស្ត្រីគួរទទួលបានឱកាសស្មើគ្នាក្នុងភាពជាអ្នកដឹកនាំដែរឬទេ?",
+"Yes, because leadership should be based on ability, character, and commitment rather than gender. When qualified women are excluded, society loses valuable ideas and perspectives. Equal opportunity does not mean everyone receives a position automatically. It means everyone has a fair chance to demonstrate their skills. I want young women to prepare themselves through education, experience, and confidence while also encouraging institutions to remove unfair barriers. A better future requires talent from everyone.",
+"បាទ/ចាស ព្រោះភាពជាអ្នកដឹកនាំគួរផ្អែកលើសមត្ថភាព ចរិតលក្ខណៈ និងការប្តេជ្ញាចិត្ត មិនមែនយេនឌ័រទេ។ នៅពេលស្ត្រីដែលមានសមត្ថភាពត្រូវបានដកចេញ សង្គមនឹងបាត់បង់គំនិត និងទស្សនៈដ៏មានតម្លៃ។ ឱកាសស្មើគ្នាមិនមានន័យថាមនុស្សគ្រប់រូបទទួលបានតំណែងដោយស្វ័យប្រវត្តិទេ ប៉ុន្តែមានន័យថាមនុស្សគ្រប់រូបមានឱកាសយុត្តិធម៌ក្នុងការបង្ហាញសមត្ថភាព។ នាងខ្ញុំចង់ឱ្យយុវនារីត្រៀមខ្លួនតាមរយៈការអប់រំ បទពិសោធ និងទំនុកចិត្ត ហើយលើកទឹកចិត្តស្ថាប័នឱ្យលុបបំបាត់ឧបសគ្គមិនយុត្តិធម៌។ អនាគតល្អប្រសើរត្រូវការទេពកោសល្យពីមនុស្សគ្រប់រូប។"],
+
+["Women Empowerment",
+"What does feminism mean to you?",
+"តើស្ត្រីនិយមមានន័យដូចម្តេចចំពោះអ្នក?",
+"For me, feminism means supporting equal rights, dignity, and opportunities for women. It does not require disrespecting men or ignoring the different challenges people face. I believe a fair society allows every person to develop their abilities without being limited by harmful stereotypes. Feminism also reminds us to listen to women whose voices are often overlooked. My goal is to encourage cooperation and respect, because equality should help people live together with greater freedom and understanding.",
+"សម្រាប់នាងខ្ញុំ ស្ត្រីនិយមមានន័យថាការគាំទ្រសិទ្ធិ សេចក្តីថ្លៃថ្នូរ និងឱកាសស្មើគ្នាសម្រាប់ស្ត្រី។ វាមិនតម្រូវឱ្យមើលងាយបុរស ឬមិនអើពើនឹងបញ្ហាខុសៗគ្នាដែលមនុស្សប្រឈមមុខទេ។ នាងខ្ញុំជឿថាសង្គមយុត្តិធម៌អនុញ្ញាតឱ្យមនុស្សគ្រប់រូបអភិវឌ្ឍសមត្ថភាពដោយមិនត្រូវបានកំណត់ដោយផ្នត់គំនិតអវិជ្ជមាន។ ស្ត្រីនិយមក៏រំលឹកឱ្យយើងស្តាប់ស្ត្រីដែលសំឡេងរបស់ពួកគេតែងត្រូវបានមើលរំលង។ គោលដៅរបស់នាងខ្ញុំគឺលើកទឹកចិត្តកិច្ចសហការ និងការគោរព ព្រោះសមភាពគួរជួយឱ្យមនុស្សរស់នៅជាមួយគ្នាដោយសេរីភាព និងការយល់ចិត្តកាន់តែច្រើន។"],
+
+["Women Empowerment",
+"How would you inspire young girls?",
+"តើអ្នកនឹងបំផុសគំនិតដល់ក្មេងស្រីដោយរបៀបណា?",
+"I would inspire young girls by sharing my journey honestly, including the difficulties and mistakes. I want them to know that confidence is developed through practice, not something everyone is born with. I would encourage them to continue learning, ask for support, and explore careers they find meaningful. I would also remind them that they do not need to become beauty queens to make a difference. Their voices, talents, and choices already matter. My hope is to help them recognize that potential.",
+"នាងខ្ញុំនឹងបំផុសគំនិតដល់ក្មេងស្រីតាមរយៈការចែករំលែកដំណើរជីវិតដោយស្មោះត្រង់ រួមទាំងការលំបាក និងកំហុស។ នាងខ្ញុំចង់ឱ្យពួកគេដឹងថាទំនុកចិត្តកើតឡើងតាមរយៈការហ្វឹកហាត់ មិនមែនមនុស្សគ្រប់រូបកើតមកមានស្រាប់ទេ។ នាងខ្ញុំនឹងលើកទឹកចិត្តពួកគេឱ្យបន្តរៀន ស្វែងរកការគាំទ្រ និងស្វែងយល់អំពីអាជីពដែលមានអត្ថន័យសម្រាប់ខ្លួន។ នាងខ្ញុំក៏នឹងរំលឹកថាពួកគេមិនចាំបាច់ក្លាយជាបវរកញ្ញាដើម្បីបង្កើតការផ្លាស់ប្តូរទេ។ សំឡេង ទេពកោសល្យ និងជម្រើសរបស់ពួកគេមានសារៈសំខាន់រួចហើយ។ ក្តីសង្ឃឹមរបស់នាងខ្ញុំគឺជួយឱ្យពួកគេទទួលស្គាល់សក្តានុពលនោះ។"],
+
+["Women Empowerment",
+"What would you change for women around the world?",
+"តើអ្នកចង់ផ្លាស់ប្តូរអ្វីសម្រាប់ស្ត្រីជុំវិញពិភពលោក?",
+"I would work toward a world where every woman can access education and make safe, informed choices about her future. I understand that a single person cannot solve every problem, but we can contribute through advocacy, partnerships, and consistent action. I would begin by listening to women in communities and supporting projects that respond to their needs. My message is simple: a woman's opportunities should not be determined by poverty, discrimination, or the place where she was born.",
+"នាងខ្ញុំចង់ខិតខំឆ្ពោះទៅរកពិភពលោកដែលស្ត្រីគ្រប់រូបអាចទទួលបានការអប់រំ និងធ្វើជម្រើសអំពីអនាគតដោយសុវត្ថិភាព និងមានព័ត៌មានគ្រប់គ្រាន់។ នាងខ្ញុំយល់ថាមនុស្សម្នាក់មិនអាចដោះស្រាយបញ្ហាទាំងអស់បានទេ ប៉ុន្តែយើងអាចចូលរួមតាមរយៈការតស៊ូមតិ ភាពជាដៃគូ និងសកម្មភាពជាបន្តបន្ទាប់។ នាងខ្ញុំនឹងចាប់ផ្តើមដោយស្តាប់ស្ត្រីក្នុងសហគមន៍ និងគាំទ្រគម្រោងដែលឆ្លើយតបនឹងតម្រូវការរបស់ពួកគេ។ សាររបស់នាងខ្ញុំគឺឱកាសរបស់ស្ត្រីមិនគួរត្រូវបានកំណត់ដោយភាពក្រីក្រ ការរើសអើង ឬទីកន្លែងកំណើតឡើយ។"],
+
+/* ===== EDUCATION: 21–30 ===== */
+
+["Education","Why is education important for girls?","ហេតុអ្វីការអប់រំសំខាន់សម្រាប់ក្មេងស្រី?","Education gives girls knowledge, confidence, and more choices about their future. It can help them understand their rights, develop skills, and contribute to their families and communities. Yet some girls face poverty, distance, or discrimination that makes learning difficult. I believe we must work together to reduce those barriers. Every girl deserves the chance to discover her talents, not simply because education can help the economy, but because learning is valuable for her own life and dignity.","ការអប់រំផ្តល់ចំណេះដឹង ទំនុកចិត្ត និងជម្រើសកាន់តែច្រើនដល់ក្មេងស្រីសម្រាប់អនាគត។ វាអាចជួយឱ្យពួកគេយល់ពីសិទ្ធិ អភិវឌ្ឍជំនាញ និងចូលរួមចំណែកក្នុងគ្រួសារ និងសហគមន៍។ ប៉ុន្តែក្មេងស្រីមួយចំនួនប្រឈមភាពក្រីក្រ ចម្ងាយផ្លូវ ឬការរើសអើងដែលធ្វើឱ្យការរៀនលំបាក។ នាងខ្ញុំជឿថាយើងត្រូវសហការគ្នាកាត់បន្ថយឧបសគ្គទាំងនោះ។ ក្មេងស្រីគ្រប់រូបសមនឹងមានឱកាសស្វែងរកទេពកោសល្យរបស់ខ្លួន មិនមែនត្រឹមតែដោយសារការអប់រំជួយសេដ្ឋកិច្ចទេ ប៉ុន្តែដោយសារការរៀនមានតម្លៃសម្រាប់ជីវិត និងសេចក្តីថ្លៃថ្នូររបស់ពួកគេ។"],
+["Education","How can we improve education in rural areas?","តើយើងអាចកែលម្អការអប់រំនៅតំបន់ជនបទដោយរបៀបណា?","We should begin by understanding the challenges that rural students and teachers face. Some communities need safer school buildings, reliable transportation, trained teachers, learning materials, or internet access. I believe local voices must be part of planning because they understand their needs best. We should also support families who struggle with the costs of keeping children in school. Improving education is not only about building classrooms; it is about making sure children can learn effectively and continue their studies.","យើងគួរចាប់ផ្តើមដោយស្វែងយល់ពីបញ្ហាដែលសិស្ស និងគ្រូនៅតំបន់ជនបទកំពុងប្រឈម។ សហគមន៍ខ្លះត្រូវការអគារសិក្សាដែលមានសុវត្ថិភាព មធ្យោបាយធ្វើដំណើរដែលទុកចិត្តបាន គ្រូមានការបណ្តុះបណ្តាល សម្ភារៈសិក្សា ឬអ៊ីនធឺណិត។ នាងខ្ញុំជឿថាសំឡេងអ្នកក្នុងតំបន់ត្រូវមានចំណែកក្នុងការរៀបចំផែនការ ព្រោះពួកគេយល់ពីតម្រូវការរបស់ខ្លួនច្បាស់បំផុត។ យើងក៏គួរគាំទ្រគ្រួសារដែលពិបាកចំណាយដើម្បីឱ្យកូនបន្តរៀន។ ការកែលម្អការអប់រំមិនមែនគ្រាន់តែសាងសង់ថ្នាក់រៀនទេ ប៉ុន្តែធានាថាកុមារអាចរៀនបានល្អ និងបន្តការសិក្សា។"],
+["Education","What would you do to help children who cannot attend school?","តើអ្នកនឹងធ្វើអ្វីដើម្បីជួយកុមារដែលមិនអាចទៅសាលា?","First, I would listen to families and educators to understand why children are missing school. The reasons may include financial difficulties, transportation, family responsibilities, or disability-related barriers. I would seek partnerships with organizations already working in education rather than promise solutions I cannot deliver alone. Support could include learning materials, scholarships, accessible facilities, or community awareness. My goal would be to help children return to learning in ways that are practical, respectful, and sustainable.","ដំបូង នាងខ្ញុំនឹងស្តាប់គ្រួសារ និងអ្នកអប់រំ ដើម្បីយល់ថាហេតុអ្វីកុមារមិនអាចទៅសាលា។ មូលហេតុអាចរួមមានបញ្ហាហិរញ្ញវត្ថុ ការធ្វើដំណើរ ការទទួលខុសត្រូវក្នុងគ្រួសារ ឬឧបសគ្គទាក់ទងនឹងពិការភាព។ នាងខ្ញុំនឹងស្វែងរកភាពជាដៃគូជាមួយអង្គការដែលកំពុងធ្វើការផ្នែកអប់រំ ជាជាងសន្យាដោះស្រាយអ្វីដែលមិនអាចធ្វើម្នាក់ឯងបាន។ ការគាំទ្រអាចរួមមានសម្ភារៈសិក្សា អាហារូបករណ៍ បរិក្ខារងាយស្រួលប្រើ ឬការផ្សព្វផ្សាយក្នុងសហគមន៍។ គោលដៅរបស់នាងខ្ញុំគឺជួយកុមារឱ្យត្រឡប់មករៀនតាមវិធីដែលអាចអនុវត្តបាន មានការគោរព និងមាននិរន្តរភាព។"],
+["Education","Is education more important than beauty?","តើការអប់រំសំខាន់ជាងសម្រស់ដែរឬទេ?","I believe education provides opportunities that physical beauty alone cannot guarantee. Beauty can be celebrated, but knowledge helps us make decisions, understand the world, and become independent. I do not think women should have to choose between being beautiful and being intelligent. We can value both while recognizing that appearance changes with time. What we learn and how we use that knowledge can continue benefiting ourselves and others throughout life.","នាងខ្ញុំជឿថាការអប់រំផ្តល់ឱកាសដែលសម្រស់ខាងក្រៅតែមួយមុខមិនអាចធានាបាន។ សម្រស់អាចត្រូវបានអបអរសាទរ ប៉ុន្តែចំណេះដឹងជួយយើងសម្រេចចិត្ត យល់ពីពិភពលោក និងមានឯករាជ្យភាព។ នាងខ្ញុំមិនគិតថាស្ត្រីត្រូវជ្រើសរើសរវាងភាពស្រស់ស្អាត និងភាពឆ្លាតវៃទេ។ យើងអាចឱ្យតម្លៃទាំងពីរ ខណៈទទួលស្គាល់ថារូបរាងផ្លាស់ប្តូរតាមពេលវេលា។ អ្វីដែលយើងរៀន និងរបៀបប្រើចំណេះដឹងអាចបន្តផ្តល់អត្ថប្រយោជន៍ដល់ខ្លួនឯង និងអ្នកដទៃពេញមួយជីវិត។"],
+["Education","How can technology improve education?","តើបច្ចេកវិទ្យាអាចកែលម្អការអប់រំដោយរបៀបណា?","Technology can make lessons more accessible through online resources, educational videos, and tools that support different learning needs. However, devices alone do not guarantee better education. Students also need trained teachers, reliable connections, and guidance on using information responsibly. I believe technology should support teachers rather than replace the human relationships that make learning meaningful. We must also address the digital divide so children without expensive devices are not left behind.","បច្ចេកវិទ្យាអាចធ្វើឱ្យមេរៀនកាន់តែងាយស្រួលទទួលបានតាមរយៈធនធានអនឡាញ វីដេអូអប់រំ និងឧបករណ៍ដែលគាំទ្រតម្រូវការរៀនខុសៗគ្នា។ ប៉ុន្តែឧបករណ៍តែមួយមុខមិនធានាថាការអប់រំប្រសើរឡើងទេ។ សិស្សក៏ត្រូវការគ្រូដែលមានការបណ្តុះបណ្តាល អ៊ីនធឺណិតដែលទុកចិត្តបាន និងការណែនាំអំពីការប្រើព័ត៌មានដោយការទទួលខុសត្រូវ។ នាងខ្ញុំជឿថាបច្ចេកវិទ្យាគួរគាំទ្រគ្រូ ជាជាងជំនួសទំនាក់ទំនងមនុស្សដែលធ្វើឱ្យការរៀនមានអត្ថន័យ។ យើងក៏ត្រូវដោះស្រាយគម្លាតឌីជីថល ដើម្បីកុំឱ្យកុមារដែលគ្មានឧបករណ៍ថ្លៃៗត្រូវបានទុកចោល។"],
+["Education","What is the role of teachers in society?","តើគ្រូបង្រៀនមានតួនាទីអ្វីក្នុងសង្គម?","Teachers do more than explain lessons. They help students develop curiosity, discipline, confidence, and the ability to think critically. A supportive teacher can change how a child sees their own future. I believe society should respect teachers and provide the training and resources they need. We should also remember that teaching is a shared responsibility involving families and communities. When we invest in teachers, we invest in generations of learners who will shape our future.","គ្រូបង្រៀនមិនមែនគ្រាន់តែពន្យល់មេរៀនទេ។ ពួកគាត់ជួយសិស្សអភិវឌ្ឍការចង់ដឹងចង់ឃើញ វិន័យ ទំនុកចិត្ត និងសមត្ថភាពគិតវិភាគ។ គ្រូដែលគាំទ្រសិស្សអាចផ្លាស់ប្តូររបៀបដែលកុមារមើលឃើញអនាគតខ្លួនឯង។ នាងខ្ញុំជឿថាសង្គមគួរគោរពគ្រូ និងផ្តល់ការបណ្តុះបណ្តាល ព្រមទាំងធនធានដែលពួកគាត់ត្រូវការ។ យើងក៏គួរចងចាំថាការអប់រំជាការទទួលខុសត្រូវរួមរបស់គ្រួសារ និងសហគមន៍។ នៅពេលយើងវិនិយោគលើគ្រូ យើងកំពុងវិនិយោគលើមនុស្សជំនាន់ក្រោយដែលនឹងកសាងអនាគត។"],
+["Education","Should education be free for everyone?","តើការអប់រំគួរតែឥតគិតថ្លៃសម្រាប់មនុស្សគ្រប់រូបដែរឬទេ?","I believe every child should have access to quality basic education without financial barriers preventing attendance. Education is fundamental to personal development and a stronger society. Making it accessible requires more than removing tuition fees; families may still struggle with transportation, uniforms, or learning materials. Governments and communities should consider these practical costs when designing support. My hope is that no child has to abandon learning simply because their family cannot afford the opportunity.","នាងខ្ញុំជឿថាកុមារគ្រប់រូបគួរទទួលបានការអប់រំមូលដ្ឋានដែលមានគុណភាព ដោយគ្មានឧបសគ្គហិរញ្ញវត្ថុរារាំងការចូលរៀន។ ការអប់រំមានសារៈសំខាន់ចំពោះការអភិវឌ្ឍខ្លួន និងសង្គមរឹងមាំ។ ការធ្វើឱ្យវាងាយស្រួលទទួលបានត្រូវការលើសពីការលុបថ្លៃសិក្សា ព្រោះគ្រួសារអាចនៅតែពិបាកចំណាយលើការធ្វើដំណើរ ឯកសណ្ឋាន ឬសម្ភារៈសិក្សា។ រដ្ឋាភិបាល និងសហគមន៍គួរពិចារណាចំណាយជាក់ស្តែងទាំងនេះនៅពេលរៀបចំការគាំទ្រ។ ក្តីសង្ឃឹមរបស់នាងខ្ញុំគឺកុំឱ្យកុមារណាម្នាក់បោះបង់ការរៀនគ្រាន់តែដោយសារគ្រួសារមិនមានលទ្ធភាព។"],
+["Education","What would you tell students who want to quit school?","តើអ្នកចង់ប្រាប់អ្វីដល់សិស្សដែលចង់បោះបង់ការសិក្សា?","I would first ask what is making school difficult because every student's situation is different. Some need encouragement, while others need financial support, a safer environment, or a different learning path. I would remind them that education can open doors, but I would not judge someone facing serious obstacles. I would encourage them to speak with trusted teachers or family members and explore available options. Asking for help can be the first step toward continuing a dream.","ដំបូងនាងខ្ញុំនឹងសួរថាអ្វីធ្វើឱ្យការសិក្សាលំបាក ព្រោះស្ថានភាពសិស្សម្នាក់ៗខុសគ្នា។ អ្នកខ្លះត្រូវការការលើកទឹកចិត្ត ខណៈអ្នកផ្សេងទៀតត្រូវការជំនួយហិរញ្ញវត្ថុ បរិយាកាសមានសុវត្ថិភាព ឬផ្លូវសិក្សាផ្សេង។ នាងខ្ញុំនឹងរំលឹកថាការអប់រំអាចបើកទ្វារឱកាស ប៉ុន្តែនាងខ្ញុំនឹងមិនវិនិច្ឆ័យអ្នកដែលប្រឈមឧបសគ្គធ្ងន់ធ្ងរទេ។ នាងខ្ញុំនឹងលើកទឹកចិត្តពួកគេឱ្យនិយាយជាមួយគ្រូ ឬសមាជិកគ្រួសារដែលទុកចិត្ត និងស្វែងរកជម្រើសដែលមាន។ ការសុំជំនួយអាចជាជំហានដំបូងក្នុងការបន្តក្តីសុបិន។"],
+["Education","What is more important: knowledge or experience?","តើចំណេះដឹង ឬបទពិសោធ មួយណាសំខាន់ជាង?",
+"I believe knowledge and experience strengthen each other. Knowledge helps us understand ideas, principles, and possibilities. Experience teaches us how to apply those lessons in real situations, including moments when things do not go as planned. A person who studies but never practices may struggle to act, while someone who relies only on experience may miss useful information. I want to remain a lifelong learner who listens, studies, and learns from both success and failure.","នាងខ្ញុំជឿថាចំណេះដឹង និងបទពិសោធជួយពង្រឹងគ្នាទៅវិញទៅមក។ ចំណេះដឹងជួយឱ្យយើងយល់ពីគំនិត គោលការណ៍ និងលទ្ធភាព។ បទពិសោធបង្រៀនយើងពីរបៀបអនុវត្តមេរៀនទាំងនោះក្នុងស្ថានភាពពិត រួមទាំងពេលដែលអ្វីៗមិនដំណើរការតាមផែនការ។ មនុស្សដែលរៀនតែមិនអនុវត្តអាចពិបាកធ្វើសកម្មភាព ខណៈអ្នកដែលពឹងតែលើបទពិសោធអាចខកខានព័ត៌មានមានប្រយោជន៍។ នាងខ្ញុំចង់បន្តជាអ្នករៀនពេញមួយជីវិត ដែលចេះស្តាប់ សិក្សា និងរៀនពីទាំងជោគជ័យ និងបរាជ័យ។"],
+["Education","How can education reduce poverty?","តើការអប់រំអាចកាត់បន្ថយភាពក្រីក្រដោយរបៀបណា?","Education can help people develop skills, access better opportunities, and make informed decisions. However, education alone cannot solve poverty without fair employment, healthcare, and supportive economic conditions. I believe we should combine quality learning with practical training and opportunities for young people to use their skills. We must also support families facing immediate difficulties. Education is a powerful pathway, but it works best when society creates conditions that allow people to benefit from what they learn.","ការអប់រំអាចជួយមនុស្សអភិវឌ្ឍជំនាញ ទទួលបានឱកាសល្អប្រសើរ និងធ្វើការសម្រេចចិត្តដោយមានព័ត៌មាន។ ប៉ុន្តែការអប់រំតែមួយមុខមិនអាចដោះស្រាយភាពក្រីក្របានទេ ប្រសិនបើគ្មានការងារយុត្តិធម៌ សេវាសុខភាព និងលក្ខខណ្ឌសេដ្ឋកិច្ចគាំទ្រ។ នាងខ្ញុំជឿថាយើងគួររួមបញ្ចូលការរៀនដែលមានគុណភាពជាមួយការបណ្តុះបណ្តាលជាក់ស្តែង និងឱកាសឱ្យយុវជនប្រើជំនាញ។ យើងក៏ត្រូវគាំទ្រគ្រួសារដែលកំពុងប្រឈមការលំបាកបន្ទាន់។ ការអប់រំជាផ្លូវដ៏មានអំណាច ប៉ុន្តែវាមានប្រសិទ្ធភាពបំផុតនៅពេលសង្គមបង្កើតលក្ខខណ្ឌឱ្យមនុស្សទទួលបានអត្ថប្រយោជន៍ពីអ្វីដែលពួកគេរៀន។"],
+
+/* ===== LEADERSHIP: 31–40 ===== */
+
+["Leadership","What makes a good leader?","តើអ្វីធ្វើឱ្យមនុស្សក្លាយជាអ្នកដឹកនាំល្អ?","A good leader listens before making decisions, accepts responsibility, and treats people with respect. Leadership is not simply about having authority or giving instructions. It is about creating a shared purpose and helping others contribute their strengths. I admire leaders who admit mistakes because honesty builds trust. If I have the opportunity to lead, I want people to feel safe sharing their ideas. A successful leader should not be the only person who shines; she should help others shine too.","អ្នកដឹកនាំល្អចេះស្តាប់មុនសម្រេចចិត្ត ទទួលខុសត្រូវ និងប្រព្រឹត្តចំពោះមនុស្សដោយការគោរព។ ភាពជាអ្នកដឹកនាំមិនមែនគ្រាន់តែមានអំណាច ឬចេញបញ្ជាទេ ប៉ុន្តែជាការបង្កើតគោលបំណងរួម និងជួយឱ្យអ្នកដទៃចូលរួមតាមចំណុចខ្លាំងរបស់ខ្លួន។ នាងខ្ញុំគោរពអ្នកដឹកនាំដែលទទួលស្គាល់កំហុស ព្រោះភាពស្មោះត្រង់បង្កើតទំនុកចិត្ត។ ប្រសិនបើនាងខ្ញុំមានឱកាសដឹកនាំ នាងខ្ញុំចង់ឱ្យមនុស្សមានអារម្មណ៍ថាមានសុវត្ថិភាពក្នុងការចែករំលែកគំនិត។ អ្នកដឹកនាំជោគជ័យមិនគួរជាមនុស្សតែម្នាក់ដែលបញ្ចេញពន្លឺទេ ប៉ុន្តែគួរជួយឱ្យអ្នកដទៃបញ្ចេញពន្លឺផងដែរ។"],
+["Leadership","Is leadership born or learned?","តើភាពជាអ្នកដឹកនាំកើតមកមានស្រាប់ ឬអាចរៀនបាន?","I believe leadership can be learned. Some people may naturally feel comfortable speaking or organizing others, but effective leadership requires skills that develop through practice. We learn by listening, making decisions, receiving feedback, and accepting responsibility. I want young people to know that being shy does not mean they cannot become leaders. A thoughtful person who listens carefully may lead very effectively. Leadership is a journey of learning how to serve people, not a talent reserved for a few.","នាងខ្ញុំជឿថាភាពជាអ្នកដឹកនាំអាចរៀនបាន។ មនុស្សខ្លះអាចមានភាពងាយស្រួលក្នុងការនិយាយ ឬរៀបចំអ្នកដទៃតាមធម្មជាតិ ប៉ុន្តែភាពជាអ្នកដឹកនាំមានប្រសិទ្ធភាពត្រូវការជំនាញដែលអភិវឌ្ឍតាមការអនុវត្ត។ យើងរៀនតាមរយៈការស្តាប់ ការសម្រេចចិត្ត ការទទួលមតិកែលម្អ និងការទទួលខុសត្រូវ។ នាងខ្ញុំចង់ឱ្យយុវជនដឹងថាភាពអៀនខ្មាសមិនមានន័យថាពួកគេមិនអាចក្លាយជាអ្នកដឹកនាំទេ។ មនុស្សដែលចេះគិត និងស្តាប់ដោយយកចិត្តទុកដាក់អាចដឹកនាំបានយ៉ាងល្អ។ ភាពជាអ្នកដឹកនាំគឺជាដំណើររៀនបម្រើមនុស្ស មិនមែនជាទេពកោសល្យសម្រាប់មនុស្សតិចតួចឡើយ។"],
+["Leadership","How do you handle criticism?","តើអ្នកដោះស្រាយការរិះគន់ដោយរបៀបណា?","I try to separate constructive criticism from comments intended only to hurt. When someone offers useful feedback, I listen and consider what I can improve. I know that being in the public eye means not everyone will agree with me. However, I do not want fear of criticism to stop me from growing. I also believe we can disagree without disrespect. My goal is to remain open-minded while staying connected to my values and treating myself with kindness.","នាងខ្ញុំព្យាយាមបែងចែករវាងការរិះគន់ដើម្បីកែលម្អ និងពាក្យដែលមានគោលបំណងធ្វើឱ្យឈឺចាប់។ នៅពេលនរណាម្នាក់ផ្តល់មតិមានប្រយោជន៍ នាងខ្ញុំស្តាប់ និងពិចារណាអ្វីដែលអាចកែលម្អ។ នាងខ្ញុំដឹងថាការស្ថិតនៅមុខសាធារណជនមានន័យថាមិនមែនមនុស្សគ្រប់រូបយល់ស្របជាមួយនាងខ្ញុំទេ។ ប៉ុន្តែនាងខ្ញុំមិនចង់ឱ្យការភ័យខ្លាចការរិះគន់រារាំងការរីកចម្រើនឡើយ។ នាងខ្ញុំក៏ជឿថាយើងអាចមានមតិខុសគ្នាដោយមិនមើលងាយគ្នា។ គោលដៅរបស់នាងខ្ញុំគឺរក្សាចិត្តបើកទូលាយ ខណៈប្រកាន់ខ្ជាប់គុណតម្លៃ និងប្រព្រឹត្តចំពោះខ្លួនឯងដោយក្តីមេត្តា។"],
+["Leadership","How do you make difficult decisions?","តើអ្នកធ្វើការសម្រេចចិត្តលំបាកដោយរបៀបណា?","When facing a difficult decision, I try to understand the facts, consider the consequences, and listen to people who may be affected. I also ask whether my choice reflects my values and responsibilities. Sometimes there is no perfect answer, and that can feel uncomfortable. However, avoiding a decision can also have consequences. I believe good judgment requires both courage and humility. After making a choice, I must be willing to explain it and learn from the result.","នៅពេលប្រឈមការសម្រេចចិត្តលំបាក នាងខ្ញុំព្យាយាមយល់ពីការពិត ពិចារណាផលវិបាក និងស្តាប់មនុស្សដែលអាចរងផលប៉ះពាល់។ នាងខ្ញុំក៏សួរខ្លួនឯងថាជម្រើសនោះស្របតាមគុណតម្លៃ និងការទទួលខុសត្រូវឬទេ។ ពេលខ្លះគ្មានចម្លើយល្អឥតខ្ចោះទេ ហើយវាអាចធ្វើឱ្យមិនស្រួលចិត្ត។ ប៉ុន្តែការគេចវេសពីការសម្រេចចិត្តក៏អាចមានផលវិបាកដែរ។ នាងខ្ញុំជឿថាការវិនិច្ឆ័យល្អត្រូវការទាំងភាពក្លាហាន និងភាពរាបសា។ បន្ទាប់ពីសម្រេចចិត្ត នាងខ្ញុំត្រូវមានឆន្ទៈពន្យល់ និងរៀនពីលទ្ធផល។"],
+["Leadership","What is more important: power or responsibility?","តើអំណាច ឬការទទួលខុសត្រូវ មួយណាសំខាន់ជាង?","Responsibility is more important because power without accountability can harm people. A title may give someone authority, but it does not automatically earn trust. Trust comes from using influence fairly, listening to concerns, and accepting the consequences of decisions. As a beauty queen, I would see public attention as a responsibility to communicate carefully and support meaningful causes. Real influence is not measured by how many people follow us, but by how responsibly we treat them.","ការទទួលខុសត្រូវសំខាន់ជាង ព្រោះអំណាចដែលគ្មានគណនេយ្យភាពអាចបង្កគ្រោះថ្នាក់ដល់មនុស្ស។ តំណែងអាចផ្តល់សិទ្ធិអំណាច ប៉ុន្តែមិនធានាថាទទួលបានទំនុកចិត្តដោយស្វ័យប្រវត្តិទេ។ ទំនុកចិត្តកើតចេញពីការប្រើឥទ្ធិពលដោយយុត្តិធម៌ ការស្តាប់កង្វល់ និងការទទួលយកផលវិបាកនៃការសម្រេចចិត្ត។ ក្នុងនាមជាបវរកញ្ញា នាងខ្ញុំនឹងចាត់ទុកការចាប់អារម្មណ៍ពីសាធារណជនជាការទទួលខុសត្រូវក្នុងការប្រាស្រ័យទាក់ទងដោយប្រុងប្រយ័ត្ន និងគាំទ្របុព្វហេតុមានអត្ថន័យ។ ឥទ្ធិពលពិតប្រាកដមិនវាស់តាមចំនួនអ្នកតាមដានទេ ប៉ុន្តែតាមការប្រព្រឹត្តចំពោះពួកគេដោយការទទួលខុសត្រូវ។"],
+["Leadership","How would you lead a team with different opinions?","តើអ្នកនឹងដឹកនាំក្រុមដែលមានមតិខុសគ្នាដោយរបៀបណា?","I would begin by making sure everyone has a respectful opportunity to speak. Different opinions can help a team notice problems and discover better solutions. I would ask questions, identify shared goals, and look for evidence before choosing a direction. Not every suggestion can be followed, but every person deserves to understand the decision. I believe a leader should create an environment where disagreement is not treated as disloyalty. Respectful discussion can make a team stronger.","នាងខ្ញុំនឹងចាប់ផ្តើមដោយធានាថាមនុស្សគ្រប់រូបមានឱកាសនិយាយដោយការគោរព។ មតិខុសគ្នាអាចជួយក្រុមមើលឃើញបញ្ហា និងរកដំណោះស្រាយប្រសើរជាងមុន។ នាងខ្ញុំនឹងសួរសំណួរ ស្វែងរកគោលដៅរួម និងពិនិត្យភស្តុតាងមុនជ្រើសរើសទិសដៅ។ មិនមែនសំណើគ្រប់យ៉ាងអាចអនុវត្តបានទេ ប៉ុន្តែមនុស្សគ្រប់រូបសមនឹងយល់ពីការសម្រេចចិត្ត។ នាងខ្ញុំជឿថាអ្នកដឹកនាំគួរបង្កើតបរិយាកាសដែលការមានមតិខុសគ្នាមិនត្រូវបានចាត់ទុកថាជាការមិនស្មោះត្រង់។ ការពិភាក្សាដោយការគោរពអាចធ្វើឱ្យក្រុមរឹងមាំ។"],
+["Leadership","Can kindness be a form of leadership?","តើក្តីមេត្តាអាចជាទម្រង់នៃភាពជាអ្នកដឹកនាំបានទេ?","Yes, because kindness can build trust and help people feel safe enough to contribute. However, kindness does not mean avoiding difficult conversations or allowing harmful behavior. A compassionate leader can set clear expectations while treating people with dignity. I believe people often remember how a leader made them feel during challenging moments. If we can combine kindness with fairness and courage, we can create teams where people feel respected and motivated to do their best.","បាទ/ចាស ព្រោះក្តីមេត្តាអាចបង្កើតទំនុកចិត្ត និងជួយឱ្យមនុស្សមានអារម្មណ៍សុវត្ថិភាពក្នុងការចូលរួម។ ប៉ុន្តែក្តីមេត្តាមិនមានន័យថាគេចវេសពីការសន្ទនាលំបាក ឬអនុញ្ញាតឱ្យមានអាកប្បកិរិយាបង្កគ្រោះថ្នាក់ទេ។ អ្នកដឹកនាំដែលមានការយល់ចិត្តអាចកំណត់ការរំពឹងទុកច្បាស់លាស់ ខណៈប្រព្រឹត្តចំពោះមនុស្សដោយសេចក្តីថ្លៃថ្នូរ។ នាងខ្ញុំជឿថាមនុស្សតែងចងចាំអារម្មណ៍ដែលអ្នកដឹកនាំបានផ្តល់ឱ្យពួកគេក្នុងពេលលំបាក។ ប្រសិនបើយើងអាចរួមបញ្ចូលក្តីមេត្តា ភាពយុត្តិធម៌ និងភាពក្លាហាន យើងអាចបង្កើតក្រុមដែលមនុស្សមានអារម្មណ៍ថាត្រូវបានគោរព និងមានកម្លាំងចិត្តធ្វើឱ្យល្អបំផុត។"],
+["Leadership","What would you do if you made a public mistake?","តើអ្នកនឹងធ្វើអ្វីប្រសិនបើធ្វើខុសនៅមុខសាធារណជន?","I would acknowledge the mistake honestly, listen to those affected, and take reasonable steps to correct it. Being visible to the public does not make someone perfect. In fact, public responsibility requires greater care because our actions can influence others. I would avoid making excuses or blaming people unfairly. Instead, I would explain what I learned and how I intend to improve. I believe accountability is not a sign of weakness; it is an important part of earning trust.","នាងខ្ញុំនឹងទទួលស្គាល់កំហុសដោយស្មោះត្រង់ ស្តាប់អ្នកដែលរងផលប៉ះពាល់ និងចាត់វិធានការសមស្របដើម្បីកែតម្រូវ។ ការស្ថិតនៅមុខសាធារណជនមិនធ្វើឱ្យនរណាម្នាក់ល្អឥតខ្ចោះទេ។ ផ្ទុយទៅវិញ ការទទួលខុសត្រូវសាធារណៈត្រូវការការប្រុងប្រយ័ត្នកាន់តែខ្លាំង ព្រោះសកម្មភាពរបស់យើងអាចមានឥទ្ធិពលលើអ្នកដទៃ។ នាងខ្ញុំនឹងមិនរកលេស ឬបន្ទោសអ្នកដទៃដោយមិនយុត្តិធម៌ទេ។ នាងខ្ញុំនឹងពន្យល់អ្វីដែលបានរៀន និងរបៀបដែលចង់កែលម្អ។ នាងខ្ញុំជឿថាគណនេយ្យភាពមិនមែនជាសញ្ញានៃភាពទន់ខ្សោយទេ ប៉ុន្តែជាផ្នែកសំខាន់នៃការទទួលបានទំនុកចិត្ត។"],
+["Leadership","How can young people become leaders?","តើយុវជនអាចក្លាយជាអ្នកដឹកនាំដោយរបៀបណា?","Young people can begin leading before they receive an official title. They can volunteer, organize small projects, help classmates, and speak respectfully about problems in their communities. Leadership develops through action and reflection. I would encourage young people to learn communication skills, understand different perspectives, and keep their promises. They should also remember that leadership is not about controlling others. It is about taking responsibility and helping people work together toward a shared goal.","យុវជនអាចចាប់ផ្តើមដឹកនាំមុនទទួលបានតំណែងផ្លូវការ។ ពួកគេអាចស្ម័គ្រចិត្ត រៀបចំគម្រោងតូចៗ ជួយមិត្តរួមថ្នាក់ និងនិយាយអំពីបញ្ហាក្នុងសហគមន៍ដោយការគោរព។ ភាពជាអ្នកដឹកនាំអភិវឌ្ឍតាមរយៈសកម្មភាព និងការឆ្លុះបញ្ចាំង។ នាងខ្ញុំនឹងលើកទឹកចិត្តយុវជនឱ្យរៀនជំនាញទំនាក់ទំនង យល់ពីទស្សនៈខុសៗគ្នា និងរក្សាពាក្យសន្យា។ ពួកគេក៏គួរចងចាំថាភាពជាអ្នកដឹកនាំមិនមែនជាការគ្រប់គ្រងអ្នកដទៃទេ ប៉ុន្តែជាការទទួលខុសត្រូវ និងជួយមនុស្សធ្វើការរួមគ្នាឆ្ពោះទៅរកគោលដៅរួម។"],
+["Leadership","What is the difference between a boss and a leader?","តើចៅហ្វាយ និងអ្នកដឹកនាំខុសគ្នាយ៉ាងដូចម្តេច?","A boss is often understood as someone with formal authority, while a leader is someone who earns trust and guides people toward a shared purpose. One person can be both, but having a title does not automatically make someone inspiring. I believe good leaders explain decisions, listen to concerns, and recognize the work of others. They do not simply demand results; they help create the conditions for success. The most meaningful leadership leaves people stronger and more confident.","ចៅហ្វាយតែងត្រូវបានយល់ថាជាមនុស្សដែលមានសិទ្ធិអំណាចផ្លូវការ ខណៈអ្នកដឹកនាំជាមនុស្សដែលទទួលបានទំនុកចិត្ត និងណែនាំមនុស្សឆ្ពោះទៅរកគោលបំណងរួម។ មនុស្សម្នាក់អាចជាទាំងពីរ ប៉ុន្តែការមានតំណែងមិនធ្វើឱ្យក្លាយជាអ្នកបំផុសគំនិតដោយស្វ័យប្រវត្តិទេ។ នាងខ្ញុំជឿថាអ្នកដឹកនាំល្អពន្យល់ការសម្រេចចិត្ត ស្តាប់កង្វល់ និងទទួលស្គាល់ការខិតខំរបស់អ្នកដទៃ។ ពួកគេមិនគ្រាន់តែទាមទារលទ្ធផលទេ ប៉ុន្តែជួយបង្កើតលក្ខខណ្ឌសម្រាប់ភាពជោគជ័យ។ ភាពជាអ្នកដឹកនាំមានអត្ថន័យបំផុតនៅពេលធ្វើឱ្យមនុស្សកាន់តែរឹងមាំ និងមានទំនុកចិត្ត។"],
+
+/* ===== SOCIAL MEDIA: 41–50 ===== */
+
+["Social Media","Is social media good or bad for society?","តើបណ្តាញសង្គមល្អ ឬអាក្រក់សម្រាប់សង្គម?","I believe social media is a tool whose impact depends greatly on how we use it. It can connect families, support small businesses, and spread useful information. At the same time, it can encourage comparison, misinformation, and harmful behavior. We need digital literacy and personal responsibility rather than assuming technology is entirely good or bad. As a public figure, I would try to share content that educates and encourages respectful conversations. Our online actions should reflect the values we want to see offline.","នាងខ្ញុំជឿថាបណ្តាញសង្គមជាឧបករណ៍ដែលឥទ្ធិពលរបស់វាអាស្រ័យយ៉ាងខ្លាំងលើរបៀបប្រើប្រាស់។ វាអាចភ្ជាប់គ្រួសារ គាំទ្រអាជីវកម្មតូចៗ និងផ្សព្វផ្សាយព័ត៌មានមានប្រយោជន៍។ ក្នុងពេលជាមួយគ្នា វាអាចជំរុញការប្រៀបធៀប ព័ត៌មានមិនពិត និងអាកប្បកិរិយាបង្កគ្រោះថ្នាក់។ យើងត្រូវការចំណេះដឹងឌីជីថល និងការទទួលខុសត្រូវផ្ទាល់ខ្លួន ជាជាងសន្មតថាបច្ចេកវិទ្យាល្អ ឬអាក្រក់ទាំងស្រុង។ ក្នុងនាមជាបុគ្គលសាធារណៈ នាងខ្ញុំនឹងព្យាយាមចែករំលែកមាតិកាដែលអប់រំ និងលើកទឹកចិត្តការពិភាក្សាដោយការគោរព។ សកម្មភាពអនឡាញរបស់យើងគួរឆ្លុះបញ្ចាំងគុណតម្លៃដែលយើងចង់ឃើញក្នុងជីវិតពិត។"],
+["Social Media","How can we stop cyberbullying?","តើយើងអាចបញ្ឈប់ការគំរាមកំហែងតាមអ៊ីនធឺណិតដោយរបៀបណា?","Stopping cyberbullying requires education, clear rules, and support for people who are targeted. Young users should learn that words written behind a screen can cause real harm. Schools and families can encourage respectful communication and teach students how to report abuse. Platforms also have responsibilities to respond to harmful content. I would remind anyone experiencing cyberbullying that they deserve support and should not have to face it alone. Online kindness is important, but effective protection also requires action.","ការបញ្ឈប់ការគំរាមកំហែងតាមអ៊ីនធឺណិតត្រូវការការអប់រំ ច្បាប់ច្បាស់លាស់ និងការគាំទ្រអ្នកដែលរងគ្រោះ។ អ្នកប្រើប្រាស់វ័យក្មេងគួររៀនថាពាក្យដែលសរសេរពីក្រោយអេក្រង់អាចបង្កការឈឺចាប់ពិតប្រាកដ។ សាលារៀន និងគ្រួសារអាចលើកទឹកចិត្តការប្រាស្រ័យទាក់ទងដោយការគោរព និងបង្រៀនសិស្សពីរបៀបរាយការណ៍ការរំលោភបំពាន។ វេទិកាអនឡាញក៏មានការទទួលខុសត្រូវក្នុងការឆ្លើយតបនឹងមាតិកាបង្កគ្រោះថ្នាក់។ នាងខ្ញុំចង់រំលឹកអ្នកដែលរងការគំរាមកំហែងថាពួកគេសមនឹងទទួលបានការគាំទ្រ ហើយមិនគួរប្រឈមមុខតែម្នាក់ឯងទេ។ ក្តីមេត្តាអនឡាញសំខាន់ ប៉ុន្តែការការពារមានប្រសិទ្ធភាពក៏ត្រូវការសកម្មភាព។"],
+["Social Media","How does social media affect beauty standards?","តើបណ្តាញសង្គមប៉ះពាល់ដល់ស្តង់ដារសម្រស់យ៉ាងដូចម្តេច?","Social media often shows carefully edited images that can create unrealistic expectations about appearance. When young people compare themselves with these images, they may forget that real bodies and faces are naturally diverse. I believe we should celebrate different forms of beauty and be honest about filters and editing. As a beauty queen, I want to encourage confidence without telling anyone they must look a certain way. Our value should never depend on likes, followers, or meeting one narrow standard.","បណ្តាញសង្គមតែងបង្ហាញរូបភាពដែលបានកែសម្រួលយ៉ាងប្រុងប្រយ័ត្ន ហើយអាចបង្កើតការរំពឹងទុកមិនសមហេតុផលអំពីរូបរាង។ នៅពេលយុវជនប្រៀបធៀបខ្លួនជាមួយរូបភាពទាំងនេះ ពួកគេអាចភ្លេចថារាងកាយ និងមុខមាត់ពិតប្រាកដមានភាពចម្រុះតាមធម្មជាតិ។ នាងខ្ញុំជឿថាយើងគួរអបអរសម្រស់បែបផ្សេងៗ និងមានភាពស្មោះត្រង់អំពីការប្រើតម្រង និងការកែរូប។ ក្នុងនាមជាបវរកញ្ញា នាងខ្ញុំចង់លើកទឹកចិត្តទំនុកចិត្តដោយមិនប្រាប់នរណាម្នាក់ថាត្រូវមានរូបរាងបែបណា។ តម្លៃរបស់យើងមិនគួរអាស្រ័យលើចំនួនចូលចិត្ត អ្នកតាមដាន ឬស្តង់ដារសម្រស់តូចចង្អៀតមួយឡើយ។"],
+["Social Media","What would you change about social media?","តើអ្នកចង់ផ្លាស់ប្តូរអ្វីអំពីបណ្តាញសង្គម?","I would like social media to encourage more meaningful conversations and provide stronger protection against harassment and misleading information. I understand that platforms are complex and no single rule can solve every problem. However, clearer reporting systems, better education, and responsible content recommendations could help. I would also encourage users to think before sharing information and to respect different opinions. Social media should help us connect and learn, not make people feel that they are less valuable.","នាងខ្ញុំចង់ឱ្យបណ្តាញសង្គមលើកទឹកចិត្តការសន្ទនាដែលមានអត្ថន័យកាន់តែច្រើន និងផ្តល់ការការពាររឹងមាំជាងមុនពីការបៀតបៀន និងព័ត៌មានបំភាន់។ នាងខ្ញុំយល់ថាវេទិកាទាំងនេះមានភាពស្មុគស្មាញ ហើយគ្មានច្បាប់តែមួយអាចដោះស្រាយគ្រប់បញ្ហាទេ។ ប៉ុន្តែប្រព័ន្ធរាយការណ៍ច្បាស់លាស់ ការអប់រំប្រសើរឡើង និងការណែនាំមាតិកាដោយការទទួលខុសត្រូវអាចជួយបាន។ នាងខ្ញុំក៏នឹងលើកទឹកចិត្តអ្នកប្រើប្រាស់ឱ្យគិតមុនចែករំលែកព័ត៌មាន និងគោរពមតិខុសគ្នា។ បណ្តាញសង្គមគួរជួយយើងភ្ជាប់ទំនាក់ទំនង និងរៀនសូត្រ មិនមែនធ្វើឱ្យមនុស្សមានអារម្មណ៍ថាខ្លួនមានតម្លៃតិចឡើយ។"],
+["Social Media","Should beauty queens use social media for advocacy?","តើបវរកញ្ញាគួរប្រើបណ្តាញសង្គមដើម្បីលើកកម្ពស់បុព្វហេតុដែរឬទេ?","Yes. Social media can help beauty queens reach people beyond the stage and introduce important causes to wider audiences. However, advocacy should involve more than posting attractive pictures with inspiring captions. We should research issues, listen to affected communities, and support practical projects. I would use my platform to discuss girls' education and share trustworthy resources. I believe online influence becomes meaningful when it encourages learning, responsible participation, and real-world action.","បាទ/ចាស។ បណ្តាញសង្គមអាចជួយបវរកញ្ញាឈានទៅដល់មនុស្សក្រៅឆាក និងណែនាំបុព្វហេតុសំខាន់ៗដល់ទស្សនិកជនកាន់តែទូលំទូលាយ។ ប៉ុន្តែការតស៊ូមតិគួរមានលើសពីការបង្ហោះរូបស្អាតជាមួយពាក្យបំផុសគំនិត។ យើងគួរសិក្សាបញ្ហា ស្តាប់សហគមន៍ដែលរងផលប៉ះពាល់ និងគាំទ្រគម្រោងជាក់ស្តែង។ នាងខ្ញុំនឹងប្រើវេទិការបស់ខ្លួនដើម្បីពិភាក្សាអំពីការអប់រំក្មេងស្រី និងចែករំលែកធនធានដែលអាចទុកចិត្តបាន។ នាងខ្ញុំជឿថាឥទ្ធិពលអនឡាញមានអត្ថន័យនៅពេលវាលើកទឹកចិត្តការរៀនសូត្រ ការចូលរួមដោយការទទួលខុសត្រូវ និងសកម្មភាពក្នុងជីវិតពិត។"],
+["Social Media","How do you deal with negative comments online?","តើអ្នកដោះស្រាយមតិអវិជ្ជមានលើអ៊ីនធឺណិតដោយរបៀបណា?","I try to recognize the difference between useful criticism and personal attacks. If someone points out a genuine mistake, I want to learn from it. But I do not believe I must accept abuse to prove that I am strong. I can set boundaries, report harmful behavior, and step away when necessary. I also remind myself that strangers' opinions do not fully define who I am. Confidence means remaining open to growth while protecting my dignity and well-being.","នាងខ្ញុំព្យាយាមសម្គាល់ភាពខុសគ្នារវាងការរិះគន់មានប្រយោជន៍ និងការវាយប្រហារផ្ទាល់ខ្លួន។ ប្រសិនបើនរណាម្នាក់បង្ហាញកំហុសពិតប្រាកដ នាងខ្ញុំចង់រៀនពីវា។ ប៉ុន្តែនាងខ្ញុំមិនជឿថាត្រូវទទួលយកការរំលោភបំពានដើម្បីបញ្ជាក់ថាខ្លួនរឹងមាំទេ។ នាងខ្ញុំអាចកំណត់ព្រំដែន រាយការណ៍អាកប្បកិរិយាបង្កគ្រោះថ្នាក់ និងឃ្លាតចេញនៅពេលចាំបាច់។ នាងខ្ញុំក៏រំលឹកខ្លួនឯងថាមតិរបស់មនុស្សមិនស្គាល់មិនអាចកំណត់អត្តសញ្ញាណទាំងមូលរបស់នាងខ្ញុំបានទេ។ ទំនុកចិត្តមានន័យថាបើកចិត្តទទួលការរីកចម្រើន ខណៈការពារសេចក្តីថ្លៃថ្នូរ និងសុខុមាលភាពរបស់ខ្លួន។"],
+["Social Media","Is being famous the same as being influential?","តើភាពល្បីល្បាញ និងឥទ្ធិពលមានន័យដូចគ្នាដែរឬទេ?","I do not believe fame and influence are the same. Fame means many people recognize your name or face, while meaningful influence is reflected in how your actions affect others. A person can have a small audience and still change someone's life through kindness or education. I would rather be trusted by a community than admired only for appearances. If I become well known, I want to use that attention responsibly and encourage people to take positive action.","នាងខ្ញុំមិនជឿថាភាពល្បីល្បាញ និងឥទ្ធិពលមានន័យដូចគ្នាទេ។ ភាពល្បីល្បាញមានន័យថាមនុស្សជាច្រើនស្គាល់ឈ្មោះ ឬមុខមាត់របស់អ្នក ខណៈឥទ្ធិពលមានអត្ថន័យត្រូវបានបង្ហាញតាមរយៈរបៀបដែលសកម្មភាពរបស់អ្នកប៉ះពាល់ដល់អ្នកដទៃ។ មនុស្សម្នាក់អាចមានអ្នកតាមដានតិច ប៉ុន្តែនៅតែផ្លាស់ប្តូរជីវិតនរណាម្នាក់តាមរយៈក្តីមេត្តា ឬការអប់រំ។ នាងខ្ញុំចង់ទទួលបានទំនុកចិត្តពីសហគមន៍ជាងការកោតសរសើរត្រឹមរូបរាង។ ប្រសិនបើនាងខ្ញុំល្បី នាងខ្ញុំចង់ប្រើការចាប់អារម្មណ៍នោះដោយការទទួលខុសត្រូវ និងលើកទឹកចិត្តមនុស្សឱ្យធ្វើសកម្មភាពវិជ្ជមាន។"],
+["Social Media","Should children have unlimited access to social media?","តើកុមារគួរប្រើបណ្តាញសង្គមដោយគ្មានដែនកំណត់ដែរឬទេ?","I believe children need age-appropriate guidance and protection when using social media. Unlimited access can expose them to harmful content, excessive comparison, and privacy risks. However, simply banning technology without teaching digital skills may leave them unprepared. Parents, educators, and platforms should work together to create safer experiences. Children should learn how to protect personal information, recognize misleading content, and ask for help. The goal is responsible participation, not fear of technology.","នាងខ្ញុំជឿថាកុមារត្រូវការការណែនាំ និងការការពារដែលសមស្របតាមអាយុ នៅពេលប្រើបណ្តាញសង្គម។ ការប្រើដោយគ្មានដែនកំណត់អាចធ្វើឱ្យពួកគេប្រឈមមាតិកាបង្កគ្រោះថ្នាក់ ការប្រៀបធៀបហួសហេតុ និងហានិភ័យឯកជនភាព។ ប៉ុន្តែការហាមបច្ចេកវិទ្យាដោយមិនបង្រៀនជំនាញឌីជីថលអាចធ្វើឱ្យពួកគេមិនត្រៀមខ្លួន។ ឪពុកម្តាយ អ្នកអប់រំ និងវេទិកាគួរសហការគ្នាបង្កើតបទពិសោធមានសុវត្ថិភាព។ កុមារគួររៀនការពារព័ត៌មានផ្ទាល់ខ្លួន សម្គាល់មាតិកាបំភាន់ និងសុំជំនួយ។ គោលដៅគឺការចូលរួមដោយការទទួលខុសត្រូវ មិនមែនការភ័យខ្លាចបច្ចេកវិទ្យាទេ។"],
+["Social Media","How can we identify misinformation online?","តើយើងអាចសម្គាល់ព័ត៌មានមិនពិតលើអ៊ីនធឺណិតដោយរបៀបណា?","We should check the original source, compare information with reliable references, and be cautious about emotional headlines. A popular post is not automatically true. Images and videos can also be edited or shared without context. I believe schools should teach media literacy so young people can evaluate what they see. Before sharing a dramatic story, I would ask whether it has been verified and whether spreading it could harm someone. Responsible sharing is an important form of respect.","យើងគួរពិនិត្យប្រភពដើម ប្រៀបធៀបព័ត៌មានជាមួយប្រភពដែលទុកចិត្តបាន និងប្រុងប្រយ័ត្នចំពោះចំណងជើងដែលបង្កអារម្មណ៍ខ្លាំង។ ការបង្ហោះដែលពេញនិយមមិនមានន័យថាពិតដោយស្វ័យប្រវត្តិទេ។ រូបភាព និងវីដេអូក៏អាចត្រូវបានកែសម្រួល ឬចែករំលែកដោយគ្មានបរិបទ។ នាងខ្ញុំជឿថាសាលារៀនគួរបង្រៀនចំណេះដឹងអំពីប្រព័ន្ធផ្សព្វផ្សាយ ដើម្បីឱ្យយុវជនអាចវាយតម្លៃអ្វីដែលឃើញ។ មុនចែករំលែករឿងដែលគួរឱ្យភ្ញាក់ផ្អើល នាងខ្ញុំនឹងសួរថាវាត្រូវបានផ្ទៀងផ្ទាត់ឬនៅ និងការផ្សព្វផ្សាយអាចបង្កគ្រោះថ្នាក់ដល់នរណាម្នាក់ឬទេ។ ការចែករំលែកដោយការទទួលខុសត្រូវគឺជាទម្រង់សំខាន់មួយនៃការគោរព។"],
+["Social Media","What message would you share with your followers?","តើអ្នកចង់ចែករំលែកសារអ្វីដល់អ្នកតាមដាន?",
+"I would tell my followers that their value is not measured by likes, appearance, or popularity. Social media shows only parts of people's lives, and comparing ourselves with those moments can be unfair. I would encourage them to learn something new, support their communities, and treat others kindly. I would also remind them to protect their privacy and take breaks when needed. I want my platform to be a place where people feel encouraged to grow rather than pressured to be perfect.","នាងខ្ញុំនឹងប្រាប់អ្នកតាមដានថាតម្លៃរបស់ពួកគេមិនត្រូវបានវាស់តាមចំនួនចូលចិត្ត រូបរាង ឬភាពពេញនិយមទេ។ បណ្តាញសង្គមបង្ហាញតែផ្នែកខ្លះនៃជីវិតមនុស្ស ហើយការប្រៀបធៀបខ្លួនជាមួយពេលវេលាទាំងនោះអាចមិនយុត្តិធម៌។ នាងខ្ញុំនឹងលើកទឹកចិត្តពួកគេឱ្យរៀនអ្វីថ្មី គាំទ្រសហគមន៍ និងប្រព្រឹត្តចំពោះអ្នកដទៃដោយក្តីមេត្តា។ នាងខ្ញុំក៏នឹងរំលឹកឱ្យការពារឯកជនភាព និងសម្រាកពីបណ្តាញសង្គមនៅពេលចាំបាច់។ នាងខ្ញុំចង់ឱ្យវេទិការបស់ខ្លួនជាកន្លែងដែលមនុស្សមានកម្លាំងចិត្តរីកចម្រើន ជាជាងមានសម្ពាធឱ្យល្អឥតខ្ចោះ។"],
+
+/* ===== AI & TECHNOLOGY: 51–60 ===== */
+
+["Technology","Can artificial intelligence replace human beings?","តើបញ្ញាសិប្បនិម្មិតអាចជំនួសមនុស្សបានទេ?","Artificial intelligence can perform many tasks and may change how people work, study, and communicate. However, I believe human responsibility, relationships, and moral judgment remain essential. AI systems can generate information, but people must decide how to use it and consider the consequences. We should prepare workers through education and new skills rather than ignore technological change. My hope is that AI will help people solve problems while human dignity, fairness, and accountability remain at the center.","បញ្ញាសិប្បនិម្មិតអាចបំពេញការងារជាច្រើន និងអាចផ្លាស់ប្តូររបៀបដែលមនុស្សធ្វើការ រៀន និងប្រាស្រ័យទាក់ទង។ ប៉ុន្តែនាងខ្ញុំជឿថាការទទួលខុសត្រូវរបស់មនុស្ស ទំនាក់ទំនង និងការវិនិច្ឆ័យសីលធម៌នៅតែសំខាន់។ ប្រព័ន្ធ AI អាចបង្កើតព័ត៌មាន ប៉ុន្តែមនុស្សត្រូវសម្រេចថាប្រើវាយ៉ាងដូចម្តេច និងពិចារណាផលវិបាក។ យើងគួរត្រៀមកម្មករតាមរយៈការអប់រំ និងជំនាញថ្មី ជាជាងមិនអើពើនឹងការផ្លាស់ប្តូរបច្ចេកវិទ្យា។ ក្តីសង្ឃឹមរបស់នាងខ្ញុំគឺ AI នឹងជួយមនុស្សដោះស្រាយបញ្ហា ខណៈសេចក្តីថ្លៃថ្នូរ ភាពយុត្តិធម៌ និងគណនេយ្យភាពរបស់មនុស្សនៅតែជាស្នូល។"],
+["Technology","What is the biggest benefit of AI?","តើអត្ថប្រយោជន៍ធំបំផុតរបស់ AI គឺអ្វី?","One of AI's greatest benefits is its ability to help people work with information more efficiently. It can support learning, translation, research, and certain healthcare or accessibility tools. For students, it may explain difficult concepts in different ways. However, AI-generated answers can be wrong, so people must verify important information. I believe the best use of AI is to expand human capabilities rather than replace independent thinking. Technology should help us become more informed, creative, and responsible.","អត្ថប្រយោជន៍ធំមួយរបស់ AI គឺសមត្ថភាពជួយមនុស្សធ្វើការជាមួយព័ត៌មានឱ្យមានប្រសិទ្ធភាពកាន់តែខ្ពស់។ វាអាចគាំទ្រការរៀន ការបកប្រែ ការស្រាវជ្រាវ និងឧបករណ៍មួយចំនួនក្នុងសុខាភិបាល ឬភាពងាយស្រួលប្រើ។ សម្រាប់សិស្ស វាអាចពន្យល់គំនិតលំបាកតាមវិធីផ្សេងៗ។ ប៉ុន្តែចម្លើយដែល AI បង្កើតអាចខុស ដូច្នេះមនុស្សត្រូវផ្ទៀងផ្ទាត់ព័ត៌មានសំខាន់ៗ។ នាងខ្ញុំជឿថាការប្រើ AI ល្អបំផុតគឺពង្រីកសមត្ថភាពមនុស្ស ជាជាងជំនួសការគិតដោយឯករាជ្យ។ បច្ចេកវិទ្យាគួរជួយឱ្យយើងមានព័ត៌មាន ច្នៃប្រឌិត និងទទួលខុសត្រូវកាន់តែច្រើន។"],
+["Technology","What is the greatest danger of AI?","តើគ្រោះថ្នាក់ធំបំផុតរបស់ AI គឺអ្វី?","One serious danger is using AI without enough accountability. It can produce misleading information, reinforce unfair patterns, or expose private data when systems are poorly designed or used irresponsibly. These risks matter because technology can affect many people quickly. I believe governments, developers, schools, and users all have roles in making AI safer. We need transparency, human oversight, and opportunities for people to challenge harmful decisions. Innovation should never become an excuse to ignore human rights.","គ្រោះថ្នាក់ធ្ងន់ធ្ងរមួយគឺការប្រើ AI ដោយគ្មានគណនេយ្យភាពគ្រប់គ្រាន់។ វាអាចបង្កើតព័ត៌មានបំភាន់ ពង្រឹងភាពលម្អៀងមិនយុត្តិធម៌ ឬធ្វើឱ្យទិន្នន័យឯកជនលេចធ្លាយ នៅពេលប្រព័ន្ធត្រូវបានរចនាមិនល្អ ឬប្រើដោយមិនទទួលខុសត្រូវ។ ហានិភ័យទាំងនេះសំខាន់ ព្រោះបច្ចេកវិទ្យាអាចប៉ះពាល់មនុស្សជាច្រើនយ៉ាងឆាប់រហ័ស។ នាងខ្ញុំជឿថារដ្ឋាភិបាល អ្នកអភិវឌ្ឍ សាលារៀន និងអ្នកប្រើប្រាស់សុទ្ធតែមានតួនាទីធ្វើឱ្យ AI មានសុវត្ថិភាព។ យើងត្រូវការតម្លាភាព ការត្រួតពិនិត្យដោយមនុស្ស និងឱកាសឱ្យមនុស្សតវ៉ាចំពោះការសម្រេចចិត្តបង្កគ្រោះថ្នាក់។ នវានុវត្តន៍មិនគួរក្លាយជាលេសសម្រាប់មិនអើពើនឹងសិទ្ធិមនុស្សឡើយ។"],
+["Technology","Should AI be used in schools?","តើគួរប្រើ AI នៅក្នុងសាលារៀនដែរឬទេ?","Yes, when it is used thoughtfully and with guidance. AI can help students review lessons, practice languages, and explore different explanations. However, it should not replace teachers or encourage students to submit work they do not understand. Schools need clear rules about honesty, privacy, and verifying information. I believe students should learn both how to use AI and when not to rely on it. The purpose of education is to develop understanding, not simply produce answers quickly.","បាទ/ចាស ប្រសិនបើប្រើដោយការគិតពិចារណា និងមានការណែនាំ។ AI អាចជួយសិស្សរំលឹកមេរៀន ហ្វឹកហាត់ភាសា និងស្វែងយល់ការពន្យល់ផ្សេងៗ។ ប៉ុន្តែវាមិនគួរជំនួសគ្រូ ឬលើកទឹកចិត្តសិស្សឱ្យដាក់ស្នាដៃដែលខ្លួនមិនយល់ទេ។ សាលារៀនត្រូវការច្បាប់ច្បាស់លាស់អំពីភាពស្មោះត្រង់ ឯកជនភាព និងការផ្ទៀងផ្ទាត់ព័ត៌មាន។ នាងខ្ញុំជឿថាសិស្សគួររៀនទាំងរបៀបប្រើ AI និងពេលណាមិនគួរពឹងលើវា។ គោលបំណងនៃការអប់រំគឺអភិវឌ្ឍការយល់ដឹង មិនមែនគ្រាន់តែបង្កើតចម្លើយឱ្យបានលឿនទេ។"],
+["Technology","How can technology empower women?","តើបច្ចេកវិទ្យាអាចផ្តល់ភាពអង់អាចដល់ស្ត្រីដោយរបៀបណា?","Technology can help women access education, develop businesses, find information, and connect with professional networks. For women living far from major cities, online tools may create new possibilities. However, access to devices and internet service is not equal, and online harassment can create additional barriers. I believe digital skills programs should include safety, privacy, and practical training. Technology becomes empowering when women can use it confidently and have genuine opportunities to benefit from it.","បច្ចេកវិទ្យាអាចជួយស្ត្រីទទួលបានការអប់រំ អភិវឌ្ឍអាជីវកម្ម ស្វែងរកព័ត៌មាន និងភ្ជាប់បណ្តាញវិជ្ជាជីវៈ។ សម្រាប់ស្ត្រីដែលរស់នៅឆ្ងាយពីទីក្រុងធំៗ ឧបករណ៍អនឡាញអាចបង្កើតលទ្ធភាពថ្មីៗ។ ប៉ុន្តែការទទួលបានឧបករណ៍ និងអ៊ីនធឺណិតមិនស្មើគ្នាទេ ហើយការបៀតបៀនអនឡាញអាចបង្កើតឧបសគ្គបន្ថែម។ នាងខ្ញុំជឿថាកម្មវិធីជំនាញឌីជីថលគួររួមបញ្ចូលសុវត្ថិភាព ឯកជនភាព និងការបណ្តុះបណ្តាលជាក់ស្តែង។ បច្ចេកវិទ្យាផ្តល់ភាពអង់អាចនៅពេលស្ត្រីអាចប្រើវាដោយទំនុកចិត្ត និងមានឱកាសពិតប្រាកដទទួលបានអត្ថប្រយោជន៍។"],
+["Technology","Can robots replace human compassion?","តើមនុស្សយន្តអាចជំនួសក្តីមេត្តារបស់មនុស្សបានទេ?","Robots and AI can sometimes recognize patterns in human communication and respond in helpful ways. However, we should not confuse a convincing response with the full human experience of caring for someone. Compassion involves relationships, responsibility, and understanding another person's circumstances. Technology may support caregivers, teachers, and communities, but people must remain accountable for important decisions. I believe the future should combine useful innovation with genuine human connection rather than treating one as a replacement for the other.","មនុស្សយន្ត និង AI ពេលខ្លះអាចសម្គាល់លំនាំក្នុងការប្រាស្រ័យទាក់ទងរបស់មនុស្ស និងឆ្លើយតបតាមវិធីមានប្រយោជន៍។ ប៉ុន្តែយើងមិនគួរច្រឡំចម្លើយដែលមើលទៅគួរឱ្យជឿជាក់ជាមួយបទពិសោធពេញលេញនៃការយកចិត្តទុកដាក់របស់មនុស្សទេ។ ក្តីមេត្តាពាក់ព័ន្ធនឹងទំនាក់ទំនង ការទទួលខុសត្រូវ និងការយល់ពីស្ថានភាពអ្នកដទៃ។ បច្ចេកវិទ្យាអាចគាំទ្រអ្នកថែទាំ គ្រូ និងសហគមន៍ ប៉ុន្តែមនុស្សត្រូវបន្តទទួលខុសត្រូវចំពោះការសម្រេចចិត្តសំខាន់ៗ។ នាងខ្ញុំជឿថាអនាគតគួររួមបញ្ចូលនវានុវត្តន៍មានប្រយោជន៍ជាមួយទំនាក់ទំនងមនុស្សពិតប្រាកដ ជាជាងចាត់ទុកមួយជាការជំនួសមួយទៀត។"],
+["Technology","Should governments regulate artificial intelligence?","តើរដ្ឋាភិបាលគួរគ្រប់គ្រង AI តាមច្បាប់ដែរឬទេ?","I believe appropriate regulation is important because AI can affect privacy, employment, safety, and equal treatment. Rules should protect people while allowing responsible innovation. Different uses of AI create different levels of risk, so regulation should be thoughtful rather than treating every application the same. Developers should explain limitations, and people should have ways to question important automated decisions. Good regulation requires cooperation among governments, experts, businesses, and communities. Technology should serve the public, not operate beyond responsibility.","នាងខ្ញុំជឿថាការគ្រប់គ្រងតាមច្បាប់ដែលសមស្របមានសារៈសំខាន់ ព្រោះ AI អាចប៉ះពាល់ឯកជនភាព ការងារ សុវត្ថិភាព និងការប្រព្រឹត្តដោយស្មើភាព។ ច្បាប់គួរការពារមនុស្ស ខណៈអនុញ្ញាតឱ្យមាននវានុវត្តន៍ដោយការទទួលខុសត្រូវ។ ការប្រើ AI ផ្សេងៗមានកម្រិតហានិភ័យខុសគ្នា ដូច្នេះការគ្រប់គ្រងគួរត្រូវបានពិចារណាយ៉ាងម៉ត់ចត់ ជាជាងចាត់ទុកកម្មវិធីគ្រប់ប្រភេទដូចគ្នា។ អ្នកអភិវឌ្ឍគួរពន្យល់ដែនកំណត់ ហើយមនុស្សគួរមានវិធីសួរដេញដោលការសម្រេចចិត្តស្វ័យប្រវត្តិសំខាន់ៗ។ ការគ្រប់គ្រងល្អត្រូវការកិច្ចសហការរវាងរដ្ឋាភិបាល អ្នកជំនាញ អាជីវកម្ម និងសហគមន៍។ បច្ចេកវិទ្យាគួរបម្រើសាធារណជន មិនមែនដំណើរការដោយគ្មានការទទួលខុសត្រូវឡើយ។"],
+["Technology","How should people prepare for an AI-driven future?","តើមនុស្សគួរត្រៀមខ្លួនសម្រាប់អនាគតដែលមាន AI ដោយរបៀបណា?","People should develop adaptable skills, including critical thinking, communication, digital literacy, and the ability to keep learning. Some jobs may change, so workers need opportunities to retrain without being left behind. Schools should teach students how technology works and how to question its results. I also believe human skills such as cooperation, empathy, and ethical judgment will remain important. Preparing for the future is not only about learning to use machines. It is about helping people navigate change with confidence and dignity.","មនុស្សគួរអភិវឌ្ឍជំនាញដែលអាចសម្របខ្លួនបាន រួមមានការគិតវិភាគ ការប្រាស្រ័យទាក់ទង ចំណេះដឹងឌីជីថល និងសមត្ថភាពបន្តរៀន។ ការងារខ្លះអាចផ្លាស់ប្តូរ ដូច្នេះកម្មករត្រូវការឱកាសបណ្តុះបណ្តាលឡើងវិញដោយមិនត្រូវបានទុកចោល។ សាលារៀនគួរបង្រៀនសិស្សអំពីរបៀបដំណើរការរបស់បច្ចេកវិទ្យា និងរបៀបសួរដេញដោលលទ្ធផលរបស់វា។ នាងខ្ញុំក៏ជឿថាជំនាញមនុស្សដូចជាកិច្ចសហការ ការយល់ចិត្ត និងការវិនិច្ឆ័យសីលធម៌នឹងនៅតែសំខាន់។ ការត្រៀមអនាគតមិនមែនគ្រាន់តែរៀនប្រើម៉ាស៊ីនទេ ប៉ុន្តែជាការជួយមនុស្សឆ្លងកាត់ការផ្លាស់ប្តូរដោយទំនុកចិត្ត និងសេចក្តីថ្លៃថ្នូរ។"],
+["Technology","Is technology making people less connected?","តើបច្ចេកវិទ្យាកំពុងធ្វើឱ្យមនុស្សឃ្លាតឆ្ងាយពីគ្នាដែរឬទេ?","Technology can both strengthen and weaken human connection. Video calls help families stay close across distances, while excessive screen time may reduce meaningful face-to-face conversations. I believe the important question is how we choose to use technology. We can set healthy boundaries, make time for loved ones, and use digital tools to support relationships rather than avoid them. A message can be valuable, but sometimes listening to someone in person is what they need most.","បច្ចេកវិទ្យាអាចទាំងពង្រឹង និងធ្វើឱ្យទំនាក់ទំនងមនុស្សខ្សោយ។ ការហៅវីដេអូជួយគ្រួសាររក្សាភាពជិតស្និទ្ធទោះនៅឆ្ងាយ ខណៈការប្រើអេក្រង់ហួសហេតុអាចកាត់បន្ថយការសន្ទនាផ្ទាល់ដ៏មានអត្ថន័យ។ នាងខ្ញុំជឿថាសំណួរសំខាន់គឺយើងជ្រើសរើសប្រើបច្ចេកវិទ្យាយ៉ាងដូចម្តេច។ យើងអាចកំណត់ព្រំដែនសមស្រប ចំណាយពេលជាមួយមនុស្សជាទីស្រឡាញ់ និងប្រើឧបករណ៍ឌីជីថលដើម្បីគាំទ្រទំនាក់ទំនង ជាជាងគេចវេសពីវា។ សារមួយអាចមានតម្លៃ ប៉ុន្តែពេលខ្លះការស្តាប់នរណាម្នាក់ដោយផ្ទាល់គឺជាអ្វីដែលគេត្រូវការបំផុត។"],
+["Technology","What human quality should technology never undermine?","តើគុណតម្លៃមនុស្សអ្វីដែលបច្ចេកវិទ្យាមិនគួរបំផ្លាញ?","I believe technology should never undermine human dignity. Every person deserves respect regardless of wealth, education, background, or access to devices. As systems become more powerful, we must make sure people are not reduced to numbers or treated unfairly by automated decisions. Privacy, consent, and accountability matter because technology affects real lives. Innovation is valuable when it improves human well-being. Progress should be measured not only by what machines can do, but by how people are treated.","នាងខ្ញុំជឿថាបច្ចេកវិទ្យាមិនគួរបំផ្លាញសេចក្តីថ្លៃថ្នូររបស់មនុស្សឡើយ។ មនុស្សគ្រប់រូបសមនឹងទទួលបានការគោរព មិនថាមានទ្រព្យសម្បត្តិ ការអប់រំ ប្រភពកំណើត ឬលទ្ធភាពប្រើឧបករណ៍យ៉ាងណាទេ។ នៅពេលប្រព័ន្ធកាន់តែមានអំណាច យើងត្រូវធានាថាមនុស្សមិនត្រូវបានកាត់បន្ថយទៅជាតួលេខ ឬទទួលការប្រព្រឹត្តមិនយុត្តិធម៌ដោយការសម្រេចចិត្តស្វ័យប្រវត្តិ។ ឯកជនភាព ការយល់ព្រម និងគណនេយ្យភាពសំខាន់ ព្រោះបច្ចេកវិទ្យាប៉ះពាល់ជីវិតពិត។ នវានុវត្តន៍មានតម្លៃនៅពេលវាកែលម្អសុខុមាលភាពមនុស្ស។ ការរីកចម្រើនគួរត្រូវបានវាស់មិនត្រឹមតែតាមអ្វីដែលម៉ាស៊ីនអាចធ្វើទេ ប៉ុន្តែតាមរបៀបដែលមនុស្សត្រូវបានប្រព្រឹត្តផងដែរ។"],
+
+/* ===== PEACE & SOCIETY: 61–70 ===== */
+
+["Peace & Society","What does peace mean to you?","តើសន្តិភាពមានន័យដូចម្តេចចំពោះអ្នក?","Peace means more than the absence of fighting. It means people can live safely, attend school, support their families, and express their hopes without fear. I believe peace also requires respect, justice, and opportunities for communities to resolve disagreements without violence. As someone who values education, I know children need stability to learn and grow. I want to encourage dialogue and understanding because peace is not only something governments discuss. It is something people help build through everyday choices.","សន្តិភាពមានន័យលើសពីការគ្មានការប្រយុទ្ធគ្នា។ វាមានន័យថាមនុស្សអាចរស់នៅដោយសុវត្ថិភាព ទៅសាលា គាំទ្រគ្រួសារ និងបង្ហាញក្តីសង្ឃឹមដោយគ្មានការភ័យខ្លាច។ នាងខ្ញុំជឿថាសន្តិភាពក៏ត្រូវការការគោរព យុត្តិធម៌ និងឱកាសឱ្យសហគមន៍ដោះស្រាយការខ្វែងគំនិតដោយគ្មានអំពើហិង្សា។ ក្នុងនាមជាមនុស្សដែលឱ្យតម្លៃការអប់រំ នាងខ្ញុំដឹងថាកុមារត្រូវការស្ថិរភាពដើម្បីរៀន និងធំធាត់។ នាងខ្ញុំចង់លើកទឹកចិត្តការសន្ទនា និងការយល់ចិត្ត ព្រោះសន្តិភាពមិនមែនគ្រាន់តែជារឿងដែលរដ្ឋាភិបាលពិភាក្សាទេ ប៉ុន្តែជាអ្វីដែលមនុស្សជួយកសាងតាមរយៈជម្រើសប្រចាំថ្ងៃ។"],
+["Peace & Society","How can young people promote peace?","តើយុវជនអាចលើកកម្ពស់សន្តិភាពដោយរបៀបណា?","Young people can promote peace by refusing to spread hatred, learning about different cultures, and choosing respectful dialogue when disagreements arise. They can also volunteer, support vulnerable communities, and challenge misinformation that creates unnecessary fear. I believe peace begins with the way we treat people who think differently from us. We do not have to agree on everything to recognize each other's humanity. Small acts of understanding can help create the trust needed for lasting peace.","យុវជនអាចលើកកម្ពស់សន្តិភាពដោយបដិសេធការផ្សព្វផ្សាយការស្អប់ខ្ពើម រៀនអំពីវប្បធម៌ផ្សេងៗ និងជ្រើសរើសការសន្ទនាដោយការគោរពនៅពេលមានការខ្វែងគំនិត។ ពួកគេក៏អាចស្ម័គ្រចិត្ត គាំទ្រសហគមន៍ងាយរងគ្រោះ និងប្រឆាំងព័ត៌មានមិនពិតដែលបង្កការភ័យខ្លាចមិនចាំបាច់។ នាងខ្ញុំជឿថាសន្តិភាពចាប់ផ្តើមពីរបៀបដែលយើងប្រព្រឹត្តចំពោះមនុស្សដែលគិតខុសពីយើង។ យើងមិនចាំបាច់យល់ស្របគ្រប់រឿងដើម្បីទទួលស្គាល់ភាពជាមនុស្សរបស់គ្នាទេ។ សកម្មភាពតូចៗនៃការយល់ចិត្តអាចជួយបង្កើតទំនុកចិត្តដែលត្រូវការសម្រាប់សន្តិភាពយូរអង្វែង។"],
+["Peace & Society","What would you say to people affected by war?","តើអ្នកចង់ប្រាប់អ្វីដល់មនុស្សដែលរងផលប៉ះពាល់ពីសង្គ្រាម?","I would begin by acknowledging their suffering rather than pretending that a short speech can remove their pain. Families affected by conflict need safety, healthcare, shelter, and the opportunity to rebuild their lives. Children especially deserve protection and access to education. I would encourage humanitarian support and peaceful efforts that respect human dignity. My message would be that their lives matter and their experiences should not be forgotten. Compassion must be expressed through practical help, not only words.","នាងខ្ញុំនឹងចាប់ផ្តើមដោយទទួលស្គាល់ការឈឺចាប់របស់ពួកគេ ជាជាងធ្វើដូចជាសុន្ទរកថាខ្លីមួយអាចលុបបំបាត់ការឈឺចាប់បាន។ គ្រួសារដែលរងផលប៉ះពាល់ពីជម្លោះត្រូវការសុវត្ថិភាព សេវាសុខភាព ទីជម្រក និងឱកាសកសាងជីវិតឡើងវិញ។ ជាពិសេសកុមារសមនឹងទទួលបានការការពារ និងការអប់រំ។ នាងខ្ញុំនឹងលើកទឹកចិត្តការគាំទ្រមនុស្សធម៌ និងកិច្ចខិតខំប្រឹងប្រែងដោយសន្តិវិធីដែលគោរពសេចក្តីថ្លៃថ្នូរមនុស្ស។ សាររបស់នាងខ្ញុំគឺជីវិតរបស់ពួកគេមានសារៈសំខាន់ ហើយបទពិសោធរបស់ពួកគេមិនគួរត្រូវបានបំភ្លេច។ ក្តីមេត្តាត្រូវបង្ហាញតាមរយៈជំនួយជាក់ស្តែង មិនមែនតែពាក្យសម្តីឡើយ។"],
+["Peace & Society","How can countries resolve disagreements peacefully?","តើប្រទេសនានាអាចដោះស្រាយការខ្វែងគំនិតដោយសន្តិវិធីដោយរបៀបណា?","Countries should prioritize dialogue, diplomacy, international law, and efforts to protect civilians. Disagreements can be complex, and lasting solutions require listening carefully to concerns while avoiding actions that increase suffering. I believe leaders have a responsibility to seek peaceful options and communicate honestly with their people. Ordinary citizens can also help by refusing to spread hatred toward entire populations. Patriotism and respect for other nations do not have to contradict each other. Peaceful cooperation can protect futures on both sides.","ប្រទេសនានាគួរផ្តល់អាទិភាពដល់ការសន្ទនា ការទូត ច្បាប់អន្តរជាតិ និងកិច្ចខិតខំការពារជនស៊ីវិល។ ការខ្វែងគំនិតអាចមានភាពស្មុគស្មាញ ហើយដំណោះស្រាយយូរអង្វែងត្រូវការការស្តាប់កង្វល់ដោយយកចិត្តទុកដាក់ ខណៈជៀសវាងសកម្មភាពដែលបង្កការឈឺចាប់បន្ថែម។ នាងខ្ញុំជឿថាអ្នកដឹកនាំមានការទទួលខុសត្រូវស្វែងរកជម្រើសសន្តិវិធី និងប្រាស្រ័យទាក់ទងដោយស្មោះត្រង់ជាមួយប្រជាជន។ ប្រជាពលរដ្ឋក៏អាចជួយដោយបដិសេធការផ្សព្វផ្សាយការស្អប់ខ្ពើមចំពោះប្រជាជនទាំងមូល។ ស្នេហាជាតិ និងការគោរពប្រទេសដទៃមិនចាំបាច់ផ្ទុយគ្នាទេ។ កិច្ចសហការដោយសន្តិវិធីអាចការពារអនាគតរបស់ភាគីទាំងពីរ។"],
+["Peace & Society","What is the meaning of human rights?","តើសិទ្ធិមនុស្សមានអត្ថន័យដូចម្តេច?","Human rights are the basic rights and freedoms that belong to every person because they are human. They include dignity, safety, education, and equal treatment under the law. These rights should not depend on wealth, gender, nationality, or social status. I believe understanding human rights helps us recognize injustice and speak respectfully for people whose voices are ignored. Protecting rights requires laws, institutions, and everyday responsibility. We cannot build a fair society if some people's dignity is treated as less important.","សិទ្ធិមនុស្សគឺជាសិទ្ធិ និងសេរីភាពមូលដ្ឋានដែលមនុស្សគ្រប់រូបមានដោយសារពួកគេជាមនុស្ស។ វារួមមានសេចក្តីថ្លៃថ្នូរ សុវត្ថិភាព ការអប់រំ និងការប្រព្រឹត្តស្មើគ្នាចំពោះមុខច្បាប់។ សិទ្ធិទាំងនេះមិនគួរអាស្រ័យលើទ្រព្យសម្បត្តិ យេនឌ័រ សញ្ជាតិ ឬឋានៈសង្គមទេ។ នាងខ្ញុំជឿថាការយល់ពីសិទ្ធិមនុស្សជួយឱ្យយើងសម្គាល់អយុត្តិធម៌ និងនិយាយការពារអ្នកដែលសំឡេងត្រូវបានមើលរំលងដោយការគោរព។ ការការពារសិទ្ធិត្រូវការច្បាប់ ស្ថាប័ន និងការទទួលខុសត្រូវប្រចាំថ្ងៃ។ យើងមិនអាចកសាងសង្គមយុត្តិធម៌បានទេ ប្រសិនបើសេចក្តីថ្លៃថ្នូររបស់មនុស្សមួយចំនួនត្រូវបានចាត់ទុកថាសំខាន់តិចជាង។"],
+["Peace & Society","How can we reduce discrimination?","តើយើងអាចកាត់បន្ថយការរើសអើងដោយរបៀបណា?","Reducing discrimination begins with education, fair rules, and the willingness to question our assumptions. We should listen to people who experience unfair treatment and examine practices that exclude them. Respectful conversations matter, but institutions must also provide equal opportunities and respond when discrimination occurs. I believe children should grow up learning that differences in identity, background, or ability do not determine a person's worth. A more inclusive society benefits everyone because people can contribute without unnecessary barriers.","ការកាត់បន្ថយការរើសអើងចាប់ផ្តើមពីការអប់រំ ច្បាប់យុត្តិធម៌ និងឆន្ទៈក្នុងការសួរដេញដោលការសន្មតរបស់យើង។ យើងគួរស្តាប់មនុស្សដែលជួបការប្រព្រឹត្តមិនយុត្តិធម៌ និងពិនិត្យការអនុវត្តដែលដកពួកគេចេញ។ ការសន្ទនាដោយការគោរពមានសារៈសំខាន់ ប៉ុន្តែស្ថាប័នក៏ត្រូវផ្តល់ឱកាសស្មើគ្នា និងឆ្លើយតបនៅពេលមានការរើសអើង។ នាងខ្ញុំជឿថាកុមារគួរធំធាត់ដោយរៀនថាភាពខុសគ្នានៃអត្តសញ្ញាណ ប្រភពកំណើត ឬសមត្ថភាពមិនកំណត់តម្លៃមនុស្សទេ។ សង្គមដែលទទួលយកមនុស្សគ្រប់រូបកាន់តែច្រើននឹងផ្តល់អត្ថប្រយោជន៍ដល់គ្រប់គ្នា ព្រោះមនុស្សអាចចូលរួមចំណែកដោយគ្មានឧបសគ្គមិនចាំបាច់។"],
+["Peace & Society","What does unity mean in a diverse world?","តើសាមគ្គីភាពមានន័យដូចម្តេចក្នុងពិភពលោកចម្រុះ?","Unity does not mean everyone must share the same language, culture, or opinion. It means recognizing shared humanity while respecting differences. I believe communities become stronger when people can cooperate without losing their identities. We can build unity by listening, learning about one another, and working together on common challenges such as education and poverty. A diverse world does not need to become identical to be peaceful. It needs respect, fairness, and a willingness to find common ground.","សាមគ្គីភាពមិនមានន័យថាមនុស្សគ្រប់រូបត្រូវមានភាសា វប្បធម៌ ឬមតិដូចគ្នាទេ។ វាមានន័យថាការទទួលស្គាល់ភាពជាមនុស្សរួម ខណៈគោរពភាពខុសគ្នា។ នាងខ្ញុំជឿថាសហគមន៍កាន់តែរឹងមាំនៅពេលមនុស្សអាចសហការគ្នាដោយមិនបាត់បង់អត្តសញ្ញាណ។ យើងអាចកសាងសាមគ្គីភាពដោយស្តាប់ រៀនអំពីគ្នា និងធ្វើការរួមគ្នាលើបញ្ហារួមដូចជាការអប់រំ និងភាពក្រីក្រ។ ពិភពលោកចម្រុះមិនចាំបាច់ក្លាយជាដូចគ្នាទាំងអស់ដើម្បីមានសន្តិភាពទេ។ វាត្រូវការការគោរព ភាពយុត្តិធម៌ និងឆន្ទៈស្វែងរកចំណុចរួម។"],
+["Peace & Society","How can we help people living in poverty?","តើយើងអាចជួយមនុស្សដែលរស់នៅក្នុងភាពក្រីក្រដោយរបៀបណា?","We should begin by respecting people and understanding the barriers they face. Poverty is not simply a lack of effort; it can involve limited access to education, healthcare, safe housing, and employment. I believe effective support should combine immediate assistance with long-term opportunities. We can partner with local organizations, improve access to learning, and support skills development. Most importantly, people experiencing poverty should have a voice in decisions that affect them. Dignity must remain central to every solution.","យើងគួរចាប់ផ្តើមដោយគោរពមនុស្ស និងយល់ពីឧបសគ្គដែលពួកគេប្រឈម។ ភាពក្រីក្រមិនមែនគ្រាន់តែជាការខ្វះការខិតខំទេ ប៉ុន្តែអាចពាក់ព័ន្ធនឹងការខ្វះឱកាសអប់រំ សុខាភិបាល លំនៅឋានមានសុវត្ថិភាព និងការងារ។ នាងខ្ញុំជឿថាការគាំទ្រមានប្រសិទ្ធភាពគួររួមបញ្ចូលជំនួយបន្ទាន់ជាមួយឱកាសរយៈពេលវែង។ យើងអាចសហការជាមួយអង្គការក្នុងតំបន់ កែលម្អការទទួលបានការសិក្សា និងគាំទ្រការអភិវឌ្ឍជំនាញ។ សំខាន់បំផុត មនុស្សដែលកំពុងរស់នៅក្នុងភាពក្រីក្រគួរមានសំឡេងក្នុងការសម្រេចចិត្តដែលប៉ះពាល់ដល់ពួកគេ។ សេចក្តីថ្លៃថ្នូរត្រូវនៅជាស្នូលនៃដំណោះស្រាយគ្រប់យ៉ាង។"],
+["Peace & Society","Why is kindness important in society?","ហេតុអ្វីក្តីមេត្តាមានសារៈសំខាន់ក្នុងសង្គម?","Kindness helps people feel respected and supported, especially during difficult times. It can be expressed through small actions such as listening, offering help, or speaking respectfully. However, kindness should also inspire us to address unfair conditions rather than simply comfort people affected by them. I believe a compassionate society combines personal care with responsible institutions. We may not be able to solve every problem, but we can choose not to add unnecessary suffering to another person's life.","ក្តីមេត្តាជួយឱ្យមនុស្សមានអារម្មណ៍ថាត្រូវបានគោរព និងគាំទ្រ ជាពិសេសក្នុងពេលលំបាក។ វាអាចបង្ហាញតាមរយៈសកម្មភាពតូចៗដូចជាការស្តាប់ ការផ្តល់ជំនួយ ឬការនិយាយដោយការគោរព។ ប៉ុន្តែក្តីមេត្តាក៏គួរជំរុញឱ្យយើងដោះស្រាយលក្ខខណ្ឌមិនយុត្តិធម៌ ជាជាងគ្រាន់តែលួងលោមអ្នកដែលរងផលប៉ះពាល់។ នាងខ្ញុំជឿថាសង្គមដែលមានក្តីមេត្តារួមបញ្ចូលការយកចិត្តទុកដាក់ផ្ទាល់ខ្លួនជាមួយស្ថាប័នដែលទទួលខុសត្រូវ។ យើងប្រហែលមិនអាចដោះស្រាយគ្រប់បញ្ហាបានទេ ប៉ុន្តែយើងអាចជ្រើសរើសមិនបន្ថែមការឈឺចាប់មិនចាំបាច់ដល់ជីវិតអ្នកដទៃ។"],
+["Peace & Society","What responsibility do we have toward future generations?","តើយើងមានការទទួលខុសត្រូវអ្វីចំពោះមនុស្សជំនាន់ក្រោយ?","We have a responsibility to protect the opportunities and resources that future generations will need. This includes education, a healthy environment, peaceful communities, and fair institutions. Our decisions today can create benefits or burdens for people who have not yet been born. I believe young people should be included in discussions about the future because they will live with many of these consequences. Responsible leadership means thinking beyond immediate success and considering the lasting impact of our choices.","យើងមានការទទួលខុសត្រូវការពារឱកាស និងធនធានដែលមនុស្សជំនាន់ក្រោយនឹងត្រូវការ។ វារួមមានការអប់រំ បរិស្ថានមានសុខភាពល្អ សហគមន៍សន្តិភាព និងស្ថាប័នយុត្តិធម៌។ ការសម្រេចចិត្តរបស់យើងថ្ងៃនេះអាចបង្កើតអត្ថប្រយោជន៍ ឬបន្ទុកដល់មនុស្សដែលមិនទាន់កើត។ នាងខ្ញុំជឿថាយុវជនគួរត្រូវបានបញ្ចូលក្នុងការពិភាក្សាអំពីអនាគត ព្រោះពួកគេនឹងរស់នៅជាមួយផលវិបាកជាច្រើននោះ។ ភាពជាអ្នកដឹកនាំដែលទទួលខុសត្រូវមានន័យថាគិតលើសពីជោគជ័យភ្លាមៗ និងពិចារណាឥទ្ធិពលយូរអង្វែងនៃជម្រើសរបស់យើង។"],
+
+/* ===== ENVIRONMENT: 71–80 ===== */
+
+["Environment","Why is protecting the environment important?","ហេតុអ្វីការការពារបរិស្ថានមានសារៈសំខាន់?","Protecting the environment is important because our health, food, water, and livelihoods depend on healthy natural systems. Environmental damage often affects vulnerable communities most severely. I believe we should care for nature not only because it is beautiful, but because future generations deserve a safe place to live. Individuals can reduce waste and use resources responsibly, while governments and businesses must address larger environmental challenges. Real progress requires cooperation and consistent action.","ការការពារបរិស្ថានមានសារៈសំខាន់ ព្រោះសុខភាព អាហារ ទឹក និងជីវភាពរបស់យើងពឹងផ្អែកលើប្រព័ន្ធធម្មជាតិដែលមានសុខភាពល្អ។ ការខូចខាតបរិស្ថានតែងប៉ះពាល់ខ្លាំងបំផុតដល់សហគមន៍ងាយរងគ្រោះ។ នាងខ្ញុំជឿថាយើងគួរថែរក្សាធម្មជាតិ មិនមែនត្រឹមតែដោយសារវាស្រស់ស្អាតទេ ប៉ុន្តែដោយសារមនុស្សជំនាន់ក្រោយសមនឹងមានកន្លែងរស់នៅមានសុវត្ថិភាព។ បុគ្គលអាចកាត់បន្ថយសំរាម និងប្រើធនធានដោយការទទួលខុសត្រូវ ខណៈរដ្ឋាភិបាល និងអាជីវកម្មត្រូវដោះស្រាយបញ្ហាបរិស្ថានធំៗ។ ការរីកចម្រើនពិតប្រាកដត្រូវការកិច្ចសហការ និងសកម្មភាពជាបន្តបន្ទាប់។"],
+["Environment","What can young people do about climate change?","តើយុវជនអាចធ្វើអ្វីចំពោះការប្រែប្រួលអាកាសធាតុ?","Young people can learn about climate change, reduce unnecessary waste, and support community projects that protect the environment. They can also ask leaders and businesses to make responsible decisions. However, we should not place the entire burden on individual young people because climate change requires large-scale solutions. I believe education helps us understand both the science and the choices available. The most important step is turning concern into informed, consistent action rather than believing one person must solve everything alone.","យុវជនអាចរៀនអំពីការប្រែប្រួលអាកាសធាតុ កាត់បន្ថយសំរាមមិនចាំបាច់ និងគាំទ្រគម្រោងសហគមន៍ដែលការពារបរិស្ថាន។ ពួកគេក៏អាចស្នើឱ្យអ្នកដឹកនាំ និងអាជីវកម្មធ្វើការសម្រេចចិត្តដោយការទទួលខុសត្រូវ។ ប៉ុន្តែយើងមិនគួរដាក់បន្ទុកទាំងមូលលើយុវជនម្នាក់ៗទេ ព្រោះការប្រែប្រួលអាកាសធាតុត្រូវការដំណោះស្រាយទ្រង់ទ្រាយធំ។ នាងខ្ញុំជឿថាការអប់រំជួយឱ្យយើងយល់ទាំងវិទ្យាសាស្ត្រ និងជម្រើសដែលមាន។ ជំហានសំខាន់បំផុតគឺប្រែក្លាយកង្វល់ទៅជាសកម្មភាពដែលមានព័ត៌មាន និងជាបន្តបន្ទាប់ ជាជាងជឿថាមនុស្សម្នាក់ត្រូវដោះស្រាយអ្វីៗទាំងអស់តែម្នាក់ឯង។"],
+["Environment","How can we reduce plastic pollution?","តើយើងអាចកាត់បន្ថយការបំពុលដោយប្លាស្ទិកដោយរបៀបណា?","We can reduce plastic pollution by avoiding unnecessary single-use products, improving waste collection, and supporting practical reuse and recycling systems. Businesses can redesign packaging, while communities need accessible disposal facilities. I believe education is important because people must understand where waste goes and how it affects rivers, wildlife, and public health. However, individual choices alone are not enough. We need cooperation among consumers, companies, and local authorities to create solutions that work in everyday life.","យើងអាចកាត់បន្ថយការបំពុលដោយប្លាស្ទិកតាមរយៈការជៀសវាងផលិតផលប្រើម្តងដែលមិនចាំបាច់ កែលម្អការប្រមូលសំរាម និងគាំទ្រប្រព័ន្ធប្រើឡើងវិញ និងកែច្នៃដែលអាចអនុវត្តបាន។ អាជីវកម្មអាចរចនាវេចខ្ចប់ឡើងវិញ ខណៈសហគមន៍ត្រូវការកន្លែងចោលសំរាមដែលងាយស្រួលប្រើ។ នាងខ្ញុំជឿថាការអប់រំសំខាន់ ព្រោះមនុស្សត្រូវយល់ថាសំរាមទៅទីណា និងប៉ះពាល់ទន្លេ សត្វព្រៃ និងសុខភាពសាធារណៈយ៉ាងដូចម្តេច។ ប៉ុន្តែជម្រើសបុគ្គលតែមួយមុខមិនគ្រប់គ្រាន់ទេ។ យើងត្រូវការកិច្ចសហការរវាងអ្នកប្រើប្រាស់ ក្រុមហ៊ុន និងអាជ្ញាធរមូលដ្ឋានដើម្បីបង្កើតដំណោះស្រាយដែលអាចប្រើបានក្នុងជីវិតប្រចាំថ្ងៃ។"],
+["Environment","Should economic development come before environmental protection?","តើការអភិវឌ្ឍសេដ្ឋកិច្ចគួរមកមុនការការពារបរិស្ថានដែរឬទេ?","I believe economic development and environmental protection should be planned together. Communities need jobs, infrastructure, and opportunities, but environmental damage can create long-term costs for health and livelihoods. We should look for development that uses resources responsibly and protects vulnerable people. This requires thoughtful policies, innovation, and listening to affected communities. A successful economy should improve lives today without creating unnecessary harm for tomorrow. Sustainable progress is not about choosing people over nature; it is about protecting both.","នាងខ្ញុំជឿថាការអភិវឌ្ឍសេដ្ឋកិច្ច និងការការពារបរិស្ថានគួរត្រូវបានរៀបចំផែនការរួមគ្នា។ សហគមន៍ត្រូវការការងារ ហេដ្ឋារចនាសម្ព័ន្ធ និងឱកាស ប៉ុន្តែការខូចខាតបរិស្ថានអាចបង្កចំណាយរយៈពេលវែងចំពោះសុខភាព និងជីវភាព។ យើងគួរស្វែងរកការអភិវឌ្ឍដែលប្រើធនធានដោយការទទួលខុសត្រូវ និងការពារមនុស្សងាយរងគ្រោះ។ វាត្រូវការគោលនយោបាយដែលបានគិតពិចារណា នវានុវត្តន៍ និងការស្តាប់សហគមន៍ដែលរងផលប៉ះពាល់។ សេដ្ឋកិច្ចជោគជ័យគួរកែលម្អជីវិតថ្ងៃនេះដោយមិនបង្កគ្រោះថ្នាក់មិនចាំបាច់សម្រាប់ថ្ងៃស្អែក។ ការរីកចម្រើនប្រកបដោយនិរន្តរភាពមិនមែនជាការជ្រើសរើសមនុស្សជំនួសធម្មជាតិទេ ប៉ុន្តែជាការការពារទាំងពីរ។"],
+["Environment","Why should we protect forests?","ហេតុអ្វីយើងគួរការពារព្រៃឈើ?","Forests support wildlife, protect soil and water, and play an important role in the climate. They also provide livelihoods and cultural value for many communities. When forests disappear, the consequences can affect people far beyond the cleared land. I believe protection efforts should include local communities and respect their needs and knowledge. We should support responsible land use and prevent destructive practices. Protecting forests is not only about saving trees; it is about protecting the systems that sustain life.","ព្រៃឈើគាំទ្រសត្វព្រៃ ការពារដី និងទឹក ហើយមានតួនាទីសំខាន់ចំពោះអាកាសធាតុ។ វាក៏ផ្តល់ជីវភាព និងតម្លៃវប្បធម៌ដល់សហគមន៍ជាច្រើន។ នៅពេលព្រៃឈើបាត់បង់ ផលវិបាកអាចប៉ះពាល់មនុស្សឆ្ងាយលើសពីដីដែលត្រូវបានកាប់។ នាងខ្ញុំជឿថាកិច្ចខិតខំការពារគួររួមបញ្ចូលសហគមន៍មូលដ្ឋាន និងគោរពតម្រូវការ ព្រមទាំងចំណេះដឹងរបស់ពួកគេ។ យើងគួរគាំទ្រការប្រើដីដោយការទទួលខុសត្រូវ និងទប់ស្កាត់ការអនុវត្តដែលបំផ្លាញ។ ការការពារព្រៃឈើមិនមែនគ្រាន់តែសង្គ្រោះដើមឈើទេ ប៉ុន្តែជាការការពារប្រព័ន្ធដែលទ្រទ្រង់ជីវិត។"],
+["Environment","What is your message about clean water?","តើសាររបស់អ្នកអំពីទឹកស្អាតគឺអ្វី?","Clean water is essential for health, education, and dignity. When families lack safe water, children may become ill or spend time collecting water instead of studying. I believe access to safe drinking water and sanitation should be a priority for communities and leaders. Solutions may include infrastructure, maintenance, education, and protecting water sources from pollution. My message is that clean water should not be treated as a luxury. It is a basic necessity that supports every part of life.","ទឹកស្អាតមានសារៈសំខាន់សម្រាប់សុខភាព ការអប់រំ និងសេចក្តីថ្លៃថ្នូរ។ នៅពេលគ្រួសារខ្វះទឹកមានសុវត្ថិភាព កុមារអាចឈឺ ឬត្រូវចំណាយពេលទៅយកទឹកជំនួសការសិក្សា។ នាងខ្ញុំជឿថាការទទួលបានទឹកផឹកមានសុវត្ថិភាព និងអនាម័យគួរជាអាទិភាពសម្រាប់សហគមន៍ និងអ្នកដឹកនាំ។ ដំណោះស្រាយអាចរួមមានហេដ្ឋារចនាសម្ព័ន្ធ ការថែទាំ ការអប់រំ និងការការពារប្រភពទឹកពីការបំពុល។ សាររបស់នាងខ្ញុំគឺទឹកស្អាតមិនគួរត្រូវបានចាត់ទុកជារបស់ប្រណីតទេ ប៉ុន្តែជាតម្រូវការមូលដ្ឋានដែលគាំទ្រគ្រប់ផ្នែកនៃជីវិត។"],
+["Environment","How can beauty pageants promote sustainability?","តើការប្រកួតបវរកញ្ញាអាចលើកកម្ពស់និរន្តរភាពដោយរបៀបណា?","Beauty pageants can promote sustainability by reducing unnecessary waste, choosing responsible event practices, and using their visibility to educate audiences. Contestants can support environmental organizations and highlight practical community projects. However, I believe sustainability should be reflected in actions, not only in a themed costume or speech. Organizers can examine materials, travel, and event operations. A pageant has the opportunity to show that glamour and responsibility can exist together when decisions are made thoughtfully.","ការប្រកួតបវរកញ្ញាអាចលើកកម្ពស់និរន្តរភាពដោយកាត់បន្ថយសំរាមមិនចាំបាច់ ជ្រើសរើសការរៀបចំព្រឹត្តិការណ៍ដោយការទទួលខុសត្រូវ និងប្រើភាពលេចធ្លោដើម្បីអប់រំទស្សនិកជន។ បេក្ខនារីអាចគាំទ្រអង្គការបរិស្ថាន និងបង្ហាញគម្រោងសហគមន៍ជាក់ស្តែង។ ប៉ុន្តែនាងខ្ញុំជឿថានិរន្តរភាពគួរបង្ហាញតាមសកម្មភាព មិនមែនត្រឹមឈុតតំណាងប្រធានបទ ឬសុន្ទរកថាទេ។ អ្នករៀបចំអាចពិនិត្យសម្ភារៈ ការធ្វើដំណើរ និងប្រតិបត្តិការព្រឹត្តិការណ៍។ ការប្រកួតមានឱកាសបង្ហាញថាភាពប្រណីត និងការទទួលខុសត្រូវអាចនៅជាមួយគ្នាបាន នៅពេលការសម្រេចចិត្តត្រូវបានគិតពិចារណា។"],
+["Environment","What is one environmental habit everyone can practice?","តើទម្លាប់ការពារបរិស្ថានមួយណាដែលមនុស្សគ្រប់រូបអាចអនុវត្ត?","One useful habit is reducing unnecessary waste. We can begin by thinking before buying, reusing items when practical, and disposing of rubbish properly. These actions may seem small, but they can build awareness and encourage wider change. I also recognize that people have different resources and options, so environmental advice should be realistic and respectful. Individual habits matter, but they should be supported by better systems. Caring for the environment should become part of everyday decision-making.","ទម្លាប់មានប្រយោជន៍មួយគឺការកាត់បន្ថយសំរាមមិនចាំបាច់។ យើងអាចចាប់ផ្តើមដោយគិតមុនទិញ ប្រើវត្ថុឡើងវិញនៅពេលអាចធ្វើបាន និងចោលសំរាមឱ្យបានត្រឹមត្រូវ។ សកម្មភាពទាំងនេះអាចមើលទៅតូច ប៉ុន្តែវាអាចបង្កើតការយល់ដឹង និងជំរុញការផ្លាស់ប្តូរទូលំទូលាយ។ នាងខ្ញុំក៏ទទួលស្គាល់ថាមនុស្សមានធនធាន និងជម្រើសខុសៗគ្នា ដូច្នេះដំបូន្មានបរិស្ថានគួរអាចអនុវត្តបាន និងមានការគោរព។ ទម្លាប់បុគ្គលមានសារៈសំខាន់ ប៉ុន្តែគួរត្រូវបានគាំទ្រដោយប្រព័ន្ធល្អប្រសើរ។ ការថែរក្សាបរិស្ថានគួរក្លាយជាផ្នែកនៃការសម្រេចចិត្តប្រចាំថ្ងៃ។"],
+["Environment","How can we protect endangered animals?","តើយើងអាចការពារសត្វជិតផុតពូជដោយរបៀបណា?","Protecting endangered animals requires conserving habitats, reducing illegal wildlife trade, and supporting scientific conservation efforts. Communities living near wildlife areas should be included in decisions and have opportunities for sustainable livelihoods. I believe education can help people understand why biodiversity matters. Animals are part of ecosystems that support human life, and losing species can create lasting damage. We should support responsible conservation organizations and avoid products that encourage exploitation of threatened wildlife.","ការការពារសត្វជិតផុតពូជត្រូវការការអភិរក្សជម្រក កាត់បន្ថយការជួញដូរសត្វព្រៃខុសច្បាប់ និងគាំទ្រកិច្ចខិតខំអភិរក្សផ្អែកលើវិទ្យាសាស្ត្រ។ សហគមន៍ដែលរស់នៅជិតតំបន់សត្វព្រៃគួរត្រូវបានបញ្ចូលក្នុងការសម្រេចចិត្ត និងមានឱកាសរកជីវភាពប្រកបដោយនិរន្តរភាព។ នាងខ្ញុំជឿថាការអប់រំអាចជួយមនុស្សយល់ថាហេតុអ្វីជីវចម្រុះសំខាន់។ សត្វជាផ្នែកនៃប្រព័ន្ធអេកូឡូស៊ីដែលគាំទ្រជីវិតមនុស្ស ហើយការបាត់បង់ប្រភេទសត្វអាចបង្កការខូចខាតយូរអង្វែង។ យើងគួរគាំទ្រអង្គការអភិរក្សដែលទទួលខុសត្រូវ និងជៀសវាងផលិតផលដែលជំរុញការកេងប្រវ័ញ្ចសត្វព្រៃរងការគំរាមកំហែង។"],
+["Environment","What kind of planet do you want future children to inherit?","តើអ្នកចង់ឱ្យកុមារជំនាន់ក្រោយទទួលបានភពផែនដីបែបណា?","I want future children to inherit a planet where they can breathe clean air, drink safe water, and enjoy healthy natural environments. I also want them to live in communities that value fairness and cooperation. We cannot guarantee a perfect world, but we can make responsible choices today. I believe caring for future generations means considering the long-term consequences of our actions. The best gift we can leave is not only wealth or technology, but a world with opportunities to live well.","នាងខ្ញុំចង់ឱ្យកុមារជំនាន់ក្រោយទទួលបានភពផែនដីដែលពួកគេអាចដកដង្ហើមខ្យល់ស្អាត ផឹកទឹកមានសុវត្ថិភាព និងរីករាយជាមួយបរិស្ថានធម្មជាតិមានសុខភាពល្អ។ នាងខ្ញុំក៏ចង់ឱ្យពួកគេរស់នៅក្នុងសហគមន៍ដែលឱ្យតម្លៃភាពយុត្តិធម៌ និងកិច្ចសហការ។ យើងមិនអាចធានាពិភពលោកល្អឥតខ្ចោះបានទេ ប៉ុន្តែយើងអាចធ្វើជម្រើសដោយការទទួលខុសត្រូវថ្ងៃនេះ។ នាងខ្ញុំជឿថាការយកចិត្តទុកដាក់ចំពោះមនុស្សជំនាន់ក្រោយមានន័យថាពិចារណាផលវិបាករយៈពេលវែងនៃសកម្មភាពរបស់យើង។ អំណោយល្អបំផុតដែលយើងអាចបន្សល់ទុកមិនមែនត្រឹមទ្រព្យសម្បត្តិ ឬបច្ចេកវិទ្យាទេ ប៉ុន្តែជាពិភពលោកដែលមានឱកាសរស់នៅបានល្អ។"],
+
+/* ===== CAMBODIA & CULTURE: 81–90 ===== */
+
+["Cambodia & Culture","What makes you proud to be Cambodian?","តើអ្វីធ្វើឱ្យអ្នកមានមោទនភាពដែលជាជនជាតិខ្មែរ?","I am proud to be Cambodian because of our rich history, beautiful culture, and the resilience of our people. Cambodia has faced many challenges, yet our communities continue to preserve traditions and work toward a better future. I admire the kindness, creativity, and determination I see in everyday life. Representing Cambodia would be an honor because I could share not only our famous heritage, but also the hopes and achievements of today's generation. My pride includes a commitment to helping my country grow.","នាងខ្ញុំមានមោទនភាពដែលជាជនជាតិខ្មែរ ព្រោះប្រវត្តិសាស្ត្រដ៏សម្បូរបែប វប្បធម៌ដ៏ស្រស់ស្អាត និងភាពធន់របស់ប្រជាជនយើង។ កម្ពុជាបានប្រឈមបញ្ហាជាច្រើន ប៉ុន្តែសហគមន៍យើងនៅតែបន្តថែរក្សាប្រពៃណី និងខិតខំឆ្ពោះទៅរកអនាគតល្អប្រសើរ។ នាងខ្ញុំកោតសរសើរក្តីមេត្តា ភាពច្នៃប្រឌិត និងការតាំងចិត្តដែលឃើញក្នុងជីវិតប្រចាំថ្ងៃ។ ការតំណាងឱ្យកម្ពុជាជាកិត្តិយស ព្រោះនាងខ្ញុំអាចចែករំលែកមិនត្រឹមបេតិកភណ្ឌល្បីល្បាញទេ ប៉ុន្តែក៏ក្តីសង្ឃឹម និងសមិទ្ធផលរបស់មនុស្សជំនាន់បច្ចុប្បន្ន។ មោទនភាពរបស់នាងខ្ញុំរួមមានការប្តេជ្ញាជួយប្រទេសរីកចម្រើន។"],
+["Cambodia & Culture","How would you introduce Cambodia to the world?","តើអ្នកនឹងណែនាំកម្ពុជាទៅកាន់ពិភពលោកដោយរបៀបណា?","I would introduce Cambodia as a country with extraordinary cultural heritage and people who continue to build their future with determination. I would share the beauty of Angkor, traditional arts, Khmer food, and the warmth of our communities. But I would also speak about modern Cambodia, including young entrepreneurs, students, and artists. I want international audiences to see us as more than a historical destination. Cambodia is a living country with creativity, challenges, and aspirations that deserve to be understood.","នាងខ្ញុំនឹងណែនាំកម្ពុជាជាប្រទេសដែលមានបេតិកភណ្ឌវប្បធម៌ដ៏អស្ចារ្យ និងប្រជាជនដែលបន្តកសាងអនាគតដោយការតាំងចិត្ត។ នាងខ្ញុំនឹងចែករំលែកសម្រស់អង្គរ សិល្បៈប្រពៃណី ម្ហូបខ្មែរ និងភាពកក់ក្តៅរបស់សហគមន៍យើង។ ប៉ុន្តែនាងខ្ញុំក៏នឹងនិយាយអំពីកម្ពុជាសម័យទំនើប រួមមានសហគ្រិនវ័យក្មេង សិស្សនិស្សិត និងសិល្បករ។ នាងខ្ញុំចង់ឱ្យទស្សនិកជនអន្តរជាតិមើលឃើញយើងលើសពីគោលដៅទេសចរណ៍ប្រវត្តិសាស្ត្រ។ កម្ពុជាជាប្រទេសដែលមានជីវិតរស់រវើក មានភាពច្នៃប្រឌិត បញ្ហាប្រឈម និងសេចក្តីប្រាថ្នាដែលសមនឹងទទួលបានការយល់ដឹង។"],
+["Cambodia & Culture","Why is Angkor Wat important to Cambodia?","ហេតុអ្វីប្រាសាទអង្គរវត្តមានសារៈសំខាន់ចំពោះកម្ពុជា?","Angkor Wat is an important symbol of Cambodia's history, artistic achievement, and cultural identity. It reminds us of the remarkable knowledge and craftsmanship of earlier generations. For me, its significance goes beyond being a famous tourist attraction. It connects people to their heritage and encourages us to protect what has been passed down. I believe we should preserve historical sites responsibly while supporting the communities around them. Honoring our past can inspire us to create a thoughtful future.","ប្រាសាទអង្គរវត្តជានិមិត្តរូបសំខាន់នៃប្រវត្តិសាស្ត្រ សមិទ្ធផលសិល្បៈ និងអត្តសញ្ញាណវប្បធម៌កម្ពុជា។ វារំលឹកយើងពីចំណេះដឹង និងស្នាដៃដ៏អស្ចារ្យរបស់មនុស្សជំនាន់មុន។ សម្រាប់នាងខ្ញុំ សារៈសំខាន់របស់វាលើសពីការជាតំបន់ទេសចរណ៍ល្បីល្បាញ។ វាភ្ជាប់មនុស្សជាមួយបេតិកភណ្ឌ និងលើកទឹកចិត្តឱ្យយើងការពារអ្វីដែលបានបន្សល់ទុក។ នាងខ្ញុំជឿថាយើងគួរអភិរក្សតំបន់ប្រវត្តិសាស្ត្រដោយការទទួលខុសត្រូវ ខណៈគាំទ្រសហគមន៍ជុំវិញ។ ការគោរពអតីតកាលអាចបំផុសគំនិតឱ្យយើងកសាងអនាគតដោយការគិតពិចារណា។"],
+["Cambodia & Culture","How can young Cambodians preserve their culture?","តើយុវជនខ្មែរអាចថែរក្សាវប្បធម៌ដោយរបៀបណា?","Young Cambodians can preserve culture by learning the Khmer language, studying history, supporting traditional artists, and sharing cultural knowledge responsibly. Preservation does not mean rejecting modern ideas. We can respect our heritage while developing new forms of creativity. I believe elders and young people have much to learn from one another. We should also avoid presenting traditions inaccurately simply to attract attention online. Culture remains meaningful when people understand, practice, and pass it on with respect.","យុវជនខ្មែរអាចថែរក្សាវប្បធម៌ដោយរៀនភាសាខ្មែរ សិក្សាប្រវត្តិសាស្ត្រ គាំទ្រសិល្បករប្រពៃណី និងចែករំលែកចំណេះដឹងវប្បធម៌ដោយការទទួលខុសត្រូវ។ ការអភិរក្សមិនមានន័យថាបដិសេធគំនិតសម័យទំនើបទេ។ យើងអាចគោរពបេតិកភណ្ឌ ខណៈអភិវឌ្ឍភាពច្នៃប្រឌិតថ្មីៗ។ នាងខ្ញុំជឿថាមនុស្សចាស់ និងយុវជនមានអ្វីជាច្រើនអាចរៀនពីគ្នា។ យើងក៏គួរជៀសវាងការបង្ហាញប្រពៃណីមិនត្រឹមត្រូវគ្រាន់តែដើម្បីទាក់ទាញការចាប់អារម្មណ៍អនឡាញ។ វប្បធម៌នៅតែមានអត្ថន័យនៅពេលមនុស្សយល់ អនុវត្ត និងបន្តចែករំលែកដោយការគោរព។"],
+["Cambodia & Culture","What would you like to improve in Cambodia?","តើអ្នកចង់កែលម្អអ្វីនៅកម្ពុជា?","One area I care deeply about is access to quality education, especially for children facing financial or geographic barriers. I believe Cambodia's future depends on helping young people develop knowledge, skills, and confidence. I would support efforts that connect schools, families, and organizations to create practical learning opportunities. I also recognize that development requires many areas working together, including health, employment, and infrastructure. My goal is to contribute positively while respecting the people already doing important work.","វិស័យមួយដែលនាងខ្ញុំយកចិត្តទុកដាក់ខ្លាំងគឺការទទួលបានការអប់រំមានគុណភាព ជាពិសេសសម្រាប់កុមារដែលប្រឈមឧបសគ្គហិរញ្ញវត្ថុ ឬភូមិសាស្ត្រ។ នាងខ្ញុំជឿថាអនាគតកម្ពុជាពឹងផ្អែកលើការជួយយុវជនអភិវឌ្ឍចំណេះដឹង ជំនាញ និងទំនុកចិត្ត។ នាងខ្ញុំនឹងគាំទ្រកិច្ចខិតខំដែលភ្ជាប់សាលារៀន គ្រួសារ និងអង្គការដើម្បីបង្កើតឱកាសសិក្សាជាក់ស្តែង។ នាងខ្ញុំក៏ទទួលស្គាល់ថាការអភិវឌ្ឍត្រូវការវិស័យជាច្រើនធ្វើការរួមគ្នា រួមមានសុខភាព ការងារ និងហេដ្ឋារចនាសម្ព័ន្ធ។ គោលដៅរបស់នាងខ្ញុំគឺចូលរួមចំណែកវិជ្ជមាន ខណៈគោរពមនុស្សដែលកំពុងធ្វើការងារសំខាន់រួចហើយ។"],
+["Cambodia & Culture","How would you represent Cambodia internationally?","តើអ្នកនឹងតំណាងឱ្យកម្ពុជានៅលើឆាកអន្តរជាតិដោយរបៀបណា?","I would represent Cambodia with confidence, humility, and respect for other cultures. I want to share our heritage accurately while also listening and learning from people around the world. Being a national representative is not only about wearing a beautiful costume or waving a flag. It is about demonstrating good character and communicating responsibly. I would use the opportunity to highlight Cambodian creativity and encourage cooperation. I believe the strongest representation combines pride in our identity with openness toward others.","នាងខ្ញុំនឹងតំណាងឱ្យកម្ពុជាដោយទំនុកចិត្ត ភាពរាបសា និងការគោរពវប្បធម៌ដទៃ។ នាងខ្ញុំចង់ចែករំលែកបេតិកភណ្ឌរបស់យើងឱ្យបានត្រឹមត្រូវ ខណៈស្តាប់ និងរៀនពីមនុស្សជុំវិញពិភពលោក។ ការតំណាងឱ្យជាតិមិនមែនគ្រាន់តែស្លៀកឈុតស្រស់ស្អាត ឬគ្រវីទង់ជាតិទេ ប៉ុន្តែជាការបង្ហាញចរិតល្អ និងការប្រាស្រ័យទាក់ទងដោយការទទួលខុសត្រូវ។ នាងខ្ញុំនឹងប្រើឱកាសនេះដើម្បីបង្ហាញភាពច្នៃប្រឌិតរបស់ខ្មែរ និងលើកទឹកចិត្តកិច្ចសហការ។ នាងខ្ញុំជឿថាការតំណាងដ៏រឹងមាំបំផុតរួមបញ្ចូលមោទនភាពលើអត្តសញ្ញាណជាមួយចិត្តបើកទូលាយចំពោះអ្នកដទៃ។"],
+["Cambodia & Culture","Why is the Khmer language important?","ហេតុអ្វីភាសាខ្មែរមានសារៈសំខាន់?","The Khmer language connects us with our families, literature, history, and cultural identity. Through language, we share stories and understand the experiences of earlier generations. I believe young Cambodians should value their mother tongue while also learning foreign languages that open international opportunities. Speaking English or another language does not make someone less Cambodian. We can communicate with the world and remain proud of our roots. Protecting a language means continuing to use it, teach it, and appreciate its richness.","ភាសាខ្មែរភ្ជាប់យើងជាមួយគ្រួសារ អក្សរសិល្ប៍ ប្រវត្តិសាស្ត្រ និងអត្តសញ្ញាណវប្បធម៌។ តាមរយៈភាសា យើងចែករំលែករឿងរ៉ាវ និងយល់ពីបទពិសោធរបស់មនុស្សជំនាន់មុន។ នាងខ្ញុំជឿថាយុវជនខ្មែរគួរឱ្យតម្លៃភាសាកំណើត ខណៈរៀនភាសាបរទេសដែលបើកឱកាសអន្តរជាតិ។ ការនិយាយភាសាអង់គ្លេស ឬភាសាផ្សេងមិនធ្វើឱ្យនរណាម្នាក់ក្លាយជាខ្មែរតិចជាងមុនទេ។ យើងអាចប្រាស្រ័យទាក់ទងជាមួយពិភពលោក និងនៅតែមានមោទនភាពចំពោះឫសគល់របស់ខ្លួន។ ការការពារភាសាមានន័យថាបន្តប្រើ បង្រៀន និងឱ្យតម្លៃភាពសម្បូរបែបរបស់វា។"],
+["Cambodia & Culture","How can tourism benefit local communities?","តើទេសចរណ៍អាចផ្តល់អត្ថប្រយោជន៍ដល់សហគមន៍មូលដ្ឋានដោយរបៀបណា?","Responsible tourism can create jobs, support local businesses, and encourage the preservation of cultural heritage. Visitors may help provide income for guides, artists, restaurants, and families. However, tourism should be managed carefully to protect historical sites, the environment, and community well-being. I believe local people should benefit fairly and have a voice in development decisions. The best tourism experience respects the destination rather than treating its culture as something to consume without understanding.","ទេសចរណ៍ដែលមានការទទួលខុសត្រូវអាចបង្កើតការងារ គាំទ្រអាជីវកម្មមូលដ្ឋាន និងលើកទឹកចិត្តការអភិរក្សបេតិកភណ្ឌវប្បធម៌។ ភ្ញៀវទេសចរអាចជួយបង្កើតចំណូលសម្រាប់មគ្គុទ្ទេសក៍ សិល្បករ ភោជនីយដ្ឋាន និងគ្រួសារ។ ប៉ុន្តែទេសចរណ៍គួរត្រូវបានគ្រប់គ្រងដោយប្រុងប្រយ័ត្ន ដើម្បីការពារតំបន់ប្រវត្តិសាស្ត្រ បរិស្ថាន និងសុខុមាលភាពសហគមន៍។ នាងខ្ញុំជឿថាប្រជាជនមូលដ្ឋានគួរទទួលបានអត្ថប្រយោជន៍ដោយយុត្តិធម៌ និងមានសំឡេងក្នុងការសម្រេចចិត្តអភិវឌ្ឍ។ បទពិសោធទេសចរណ៍ល្អបំផុតគោរពគោលដៅទេសចរណ៍ ជាជាងចាត់ទុកវប្បធម៌ជារបស់សម្រាប់ប្រើប្រាស់ដោយគ្មានការយល់ដឹង។"],
+["Cambodia & Culture","What does patriotism mean to you?","តើស្នេហាជាតិមានន័យដូចម្តេចចំពោះអ្នក?","Patriotism means loving my country and wanting its people to have a better future. For me, that love includes respecting our culture, contributing to our communities, and being willing to discuss problems constructively. It does not require looking down on other nations. I believe we can be proud of Cambodia while recognizing the dignity of people everywhere. True patriotism should encourage responsibility, learning, and service. Loving a country means caring about the well-being of the people who live there.","ស្នេហាជាតិមានន័យថាស្រឡាញ់ប្រទេសរបស់នាងខ្ញុំ និងចង់ឱ្យប្រជាជនមានអនាគតល្អប្រសើរ។ សម្រាប់នាងខ្ញុំ ក្តីស្រឡាញ់នោះរួមមានការគោរពវប្បធម៌ ការចូលរួមចំណែកក្នុងសហគមន៍ និងឆន្ទៈពិភាក្សាបញ្ហាដោយស្ថាបនា។ វាមិនតម្រូវឱ្យមើលងាយប្រទេសដទៃទេ។ នាងខ្ញុំជឿថាយើងអាចមានមោទនភាពចំពោះកម្ពុជា ខណៈទទួលស្គាល់សេចក្តីថ្លៃថ្នូររបស់មនុស្សគ្រប់ទីកន្លែង។ ស្នេហាជាតិពិតប្រាកដគួរលើកទឹកចិត្តការទទួលខុសត្រូវ ការរៀនសូត្រ និងការបម្រើ។ ការស្រឡាញ់ប្រទេសមានន័យថាយកចិត្តទុកដាក់ចំពោះសុខុមាលភាពរបស់ប្រជាជនដែលរស់នៅទីនោះ។"],
+["Cambodia & Culture","What message would you give Cambodian youth?","តើអ្នកចង់ផ្តល់សារអ្វីដល់យុវជនកម្ពុជា?","To Cambodian youth, I want to say that your dreams deserve effort and opportunity. Be proud of your identity, but never stop learning from the wider world. Develop your skills, ask questions, and treat people with respect. You do not need to become famous to contribute to Cambodia's future. A good teacher, honest worker, creative artist, or caring volunteer can make a meaningful difference. Believe in your potential, support one another, and remember that progress begins with actions we take today.","ចំពោះយុវជនកម្ពុជា នាងខ្ញុំចង់ប្រាប់ថាក្តីសុបិនរបស់អ្នកសមនឹងទទួលបានការខិតខំ និងឱកាស។ ចូរមានមោទនភាពចំពោះអត្តសញ្ញាណ ប៉ុន្តែកុំឈប់រៀនពីពិភពលោកទូលំទូលាយ។ ចូរអភិវឌ្ឍជំនាញ សួរសំណួរ និងប្រព្រឹត្តចំពោះមនុស្សដោយការគោរព។ អ្នកមិនចាំបាច់ល្បីល្បាញដើម្បីចូលរួមកសាងអនាគតកម្ពុជាទេ។ គ្រូល្អ កម្មករស្មោះត្រង់ សិល្បករច្នៃប្រឌិត ឬអ្នកស្ម័គ្រចិត្តដែលមានក្តីមេត្តា សុទ្ធតែអាចបង្កើតការផ្លាស់ប្តូរមានអត្ថន័យ។ ចូរជឿលើសក្តានុពល គាំទ្រគ្នា និងចងចាំថាការរីកចម្រើនចាប់ផ្តើមពីសកម្មភាពដែលយើងធ្វើថ្ងៃនេះ។"],
+
+/* ===== FINAL ROUND: 91–100 ===== */
+
+["Final Round","If you could change one thing in the world, what would it be?","ប្រសិនបើអ្នកអាចផ្លាស់ប្តូររឿងមួយក្នុងពិភពលោក តើវាជាអ្វី?","I would change the unequal opportunities that prevent children from receiving an education. I believe talent exists in every community, but many children cannot develop it because of poverty or other barriers. If more young people could learn safely and confidently, they would have greater freedom to shape their futures. I know this change requires cooperation among governments, families, and organizations. My dream is a world where a child's potential matters more than the circumstances into which they were born.","នាងខ្ញុំនឹងផ្លាស់ប្តូរភាពមិនស្មើគ្នានៃឱកាសដែលរារាំងកុមារពីការទទួលបានការអប់រំ។ នាងខ្ញុំជឿថាទេពកោសល្យមាននៅគ្រប់សហគមន៍ ប៉ុន្តែកុមារជាច្រើនមិនអាចអភិវឌ្ឍវាបានដោយសារភាពក្រីក្រ ឬឧបសគ្គផ្សេងៗ។ ប្រសិនបើយុវជនកាន់តែច្រើនអាចរៀនដោយសុវត្ថិភាព និងទំនុកចិត្ត ពួកគេនឹងមានសេរីភាពកាន់តែច្រើនក្នុងការកសាងអនាគត។ នាងខ្ញុំដឹងថាការផ្លាស់ប្តូរនេះត្រូវការកិច្ចសហការរវាងរដ្ឋាភិបាល គ្រួសារ និងអង្គការ។ ក្តីសុបិនរបស់នាងខ្ញុំគឺពិភពលោកដែលសក្តានុពលរបស់កុមារសំខាន់ជាងស្ថានភាពដែលពួកគេកើតមក។"],
+["Final Round","What is the most important lesson life has taught you?","តើមេរៀនសំខាន់បំផុតដែលជីវិតបានបង្រៀនអ្នកគឺអ្វី?","The most important lesson I have learned is that difficult circumstances do not have to determine our future. Challenges can make us feel uncertain, but they can also teach patience, gratitude, and determination. I have learned to appreciate the people who support me and to recognize that progress often happens slowly. I do not believe every difficulty automatically makes someone stronger; people also need support and opportunity. What matters is how we respond and whether we continue treating ourselves and others with compassion.","មេរៀនសំខាន់បំផុតដែលនាងខ្ញុំបានរៀនគឺស្ថានភាពលំបាកមិនចាំបាច់កំណត់អនាគតរបស់យើងទេ។ បញ្ហាប្រឈមអាចធ្វើឱ្យយើងមិនប្រាកដចិត្ត ប៉ុន្តែវាក៏អាចបង្រៀនការអត់ធ្មត់ ការដឹងគុណ និងការតាំងចិត្ត។ នាងខ្ញុំបានរៀនឱ្យតម្លៃមនុស្សដែលគាំទ្រ និងទទួលស្គាល់ថាការរីកចម្រើនតែងកើតឡើងយឺតៗ។ នាងខ្ញុំមិនជឿថាការលំបាកគ្រប់យ៉ាងធ្វើឱ្យមនុស្សរឹងមាំដោយស្វ័យប្រវត្តិទេ ព្រោះមនុស្សក៏ត្រូវការការគាំទ្រ និងឱកាស។ អ្វីសំខាន់គឺរបៀបដែលយើងឆ្លើយតប និងថាតើយើងបន្តប្រព្រឹត្តចំពោះខ្លួនឯង និងអ្នកដទៃដោយក្តីមេត្តាឬទេ។"],
+["Final Round","What is more important: success or happiness?","តើភាពជោគជ័យ ឬសុភមង្គល មួយណាសំខាន់ជាង?","I believe success and happiness can support each other, but they are not always the same. A person may achieve a title or earn recognition while still feeling unfulfilled. For me, meaningful success includes personal growth, healthy relationships, and contributing to something valuable. Happiness also requires appreciating the present rather than waiting for every goal to be achieved. I want to work hard for my dreams without forgetting the people and experiences that make life meaningful. A crown would be wonderful, but it should never be my only source of worth.","នាងខ្ញុំជឿថាភាពជោគជ័យ និងសុភមង្គលអាចគាំទ្រគ្នា ប៉ុន្តែមិនតែងតែដូចគ្នាទេ។ មនុស្សម្នាក់អាចទទួលបានតំណែង ឬការទទួលស្គាល់ ខណៈនៅតែមានអារម្មណ៍ថាជីវិតមិនទាន់ពេញលេញ។ សម្រាប់នាងខ្ញុំ ភាពជោគជ័យមានអត្ថន័យរួមមានការរីកចម្រើនផ្ទាល់ខ្លួន ទំនាក់ទំនងល្អ និងការចូលរួមចំណែកក្នុងអ្វីដែលមានតម្លៃ។ សុភមង្គលក៏ត្រូវការការឱ្យតម្លៃពេលបច្ចុប្បន្ន ជាជាងរង់ចាំឱ្យគោលដៅទាំងអស់សម្រេច។ នាងខ្ញុំចង់ខិតខំដើម្បីក្តីសុបិនដោយមិនភ្លេចមនុស្ស និងបទពិសោធដែលធ្វើឱ្យជីវិតមានអត្ថន័យ។ មកុដនឹងជារឿងដ៏អស្ចារ្យ ប៉ុន្តែមិនគួរជាប្រភពតម្លៃតែមួយរបស់នាងខ្ញុំឡើយ។"],
+["Final Round","What would you do if you did not win tonight?","តើអ្នកនឹងធ្វើអ្វីប្រសិនបើមិនឈ្នះនៅរាត្រីនេះ?","If I do not win tonight, I will still be grateful for the opportunity to represent my dreams and share my message. Of course, I would feel disappointed because I have worked hard. But one result cannot erase everything I have learned or the people I have met. I would congratulate the winner sincerely and continue developing my advocacy for education. I believe the purpose of my journey is greater than a single competition. A crown can open doors, but determination can help us keep moving even without one.","ប្រសិនបើនាងខ្ញុំមិនឈ្នះនៅរាត្រីនេះ នាងខ្ញុំនឹងនៅតែដឹងគុណចំពោះឱកាសតំណាងឱ្យក្តីសុបិន និងចែករំលែកសាររបស់ខ្លួន។ ជាការពិត នាងខ្ញុំនឹងខកចិត្ត ព្រោះបានខិតខំយ៉ាងខ្លាំង។ ប៉ុន្តែលទ្ធផលមួយមិនអាចលុបបំបាត់អ្វីដែលនាងខ្ញុំបានរៀន ឬមនុស្សដែលបានជួបឡើយ។ នាងខ្ញុំនឹងអបអរសាទរអ្នកឈ្នះដោយស្មោះ និងបន្តអភិវឌ្ឍការតស៊ូមតិរបស់ខ្លួនសម្រាប់ការអប់រំ។ នាងខ្ញុំជឿថាគោលបំណងនៃដំណើររបស់ខ្លួនធំជាងការប្រកួតតែមួយ។ មកុដអាចបើកទ្វារឱកាស ប៉ុន្តែការតាំងចិត្តអាចជួយឱ្យយើងបន្តទៅមុខទោះគ្មានមកុដក៏ដោយ។"],
+["Final Round","What would you do during your first day as Miss Universe?","តើអ្នកនឹងធ្វើអ្វីនៅថ្ងៃដំបូងក្នុងនាមជា Miss Universe?","On my first day as Miss Universe, I would express gratitude to the people who supported my journey and recognize the responsibility of the title. I would listen carefully to the organization's expectations and begin planning how to turn my advocacy into practical work. I would want to connect with experienced partners in education rather than make promises without a clear plan. I would also use my first public message to encourage young girls to believe in their abilities. The first day should begin a year of meaningful service.","នៅថ្ងៃដំបូងក្នុងនាមជា Miss Universe នាងខ្ញុំនឹងបង្ហាញការដឹងគុណចំពោះមនុស្សដែលគាំទ្រដំណើររបស់ខ្លួន និងទទួលស្គាល់ការទទួលខុសត្រូវនៃតំណែង។ នាងខ្ញុំនឹងស្តាប់ការរំពឹងទុករបស់អង្គការដោយយកចិត្តទុកដាក់ និងចាប់ផ្តើមរៀបចំផែនការប្រែក្លាយការតស៊ូមតិទៅជាការងារជាក់ស្តែង។ នាងខ្ញុំចង់ភ្ជាប់ទំនាក់ទំនងជាមួយដៃគូដែលមានបទពិសោធផ្នែកអប់រំ ជាជាងសន្យាដោយគ្មានផែនការច្បាស់លាស់។ នាងខ្ញុំក៏នឹងប្រើសារសាធារណៈដំបូងដើម្បីលើកទឹកចិត្តក្មេងស្រីឱ្យជឿលើសមត្ថភាពខ្លួន។ ថ្ងៃដំបូងគួរជាចំណុចចាប់ផ្តើមនៃមួយឆ្នាំដែលមានការបម្រើដ៏មានអត្ថន័យ។"],
+["Final Round","What legacy would you like to leave as a beauty queen?","តើអ្នកចង់បន្សល់ទុកកេរដំណែលអ្វីក្នុងនាមជាបវរកញ្ញា?","I would like to leave a legacy of opportunity rather than only beautiful photographs and memorable appearances. If my platform helps more girls continue their education or encourages young people to believe in their potential, I would consider that meaningful. I know lasting change requires teamwork and cannot be credited to one person. I want to support initiatives that continue helping communities after my reign ends. A title lasts for a limited time, but the positive effects of responsible service can continue much longer.","នាងខ្ញុំចង់បន្សល់ទុកកេរដំណែលនៃឱកាស ជាជាងត្រឹមរូបថតស្រស់ស្អាត និងការបង្ហាញខ្លួនគួរឱ្យចងចាំ។ ប្រសិនបើវេទិការបស់នាងខ្ញុំជួយឱ្យក្មេងស្រីកាន់តែច្រើនបន្តការសិក្សា ឬលើកទឹកចិត្តយុវជនឱ្យជឿលើសក្តានុពល នាងខ្ញុំនឹងចាត់ទុកថាវាមានអត្ថន័យ។ នាងខ្ញុំដឹងថាការផ្លាស់ប្តូរយូរអង្វែងត្រូវការការងារជាក្រុម ហើយមិនអាចផ្តល់កិត្តិយសឱ្យមនុស្សម្នាក់តែម្នាក់បានទេ។ នាងខ្ញុំចង់គាំទ្រគំនិតផ្តួចផ្តើមដែលបន្តជួយសហគមន៍បន្ទាប់ពីអាណត្តិបញ្ចប់។ តំណែងមានរយៈពេលកំណត់ ប៉ុន្តែផលវិជ្ជមាននៃការបម្រើដោយការទទួលខុសត្រូវអាចបន្តយូរជាងនេះ។"],
+["Final Round","If you had one minute to speak to the world, what would you say?","ប្រសិនបើអ្នកមានមួយនាទីនិយាយទៅកាន់ពិភពលោក តើអ្នកនឹងនិយាយអ្វី?","I would tell the world that every person deserves dignity, education, and the opportunity to build a meaningful life. We may come from different countries and backgrounds, but we share hopes for safety, love, and a better future. I would ask people to listen more carefully, reject unnecessary hatred, and support those facing difficult circumstances. I would especially remind young girls that their voices matter. We cannot change the world through words alone, but words can inspire us to begin acting with courage and compassion.","នាងខ្ញុំនឹងប្រាប់ពិភពលោកថាមនុស្សគ្រប់រូបសមនឹងទទួលបានសេចក្តីថ្លៃថ្នូរ ការអប់រំ និងឱកាសកសាងជីវិតដ៏មានអត្ថន័យ។ យើងអាចមកពីប្រទេស និងប្រភពកំណើតខុសៗគ្នា ប៉ុន្តែយើងមានក្តីសង្ឃឹមរួមចំពោះសុវត្ថិភាព ក្តីស្រឡាញ់ និងអនាគតល្អប្រសើរ។ នាងខ្ញុំនឹងស្នើឱ្យមនុស្សស្តាប់គ្នាដោយយកចិត្តទុកដាក់ បដិសេធការស្អប់ខ្ពើមមិនចាំបាច់ និងគាំទ្រអ្នកដែលកំពុងប្រឈមការលំបាក។ ជាពិសេស នាងខ្ញុំចង់រំលឹកក្មេងស្រីថាសំឡេងរបស់ពួកគេមានសារៈសំខាន់។ យើងមិនអាចផ្លាស់ប្តូរពិភពលោកតាមរយៈពាក្យសម្តីតែមួយមុខទេ ប៉ុន្តែពាក្យអាចបំផុសគំនិតឱ្យយើងចាប់ផ្តើមធ្វើសកម្មភាពដោយភាពក្លាហាន និងក្តីមេត្តា។"],
+["Final Round","What does courage mean to you?","តើភាពក្លាហានមានន័យដូចម្តេចចំពោះអ្នក?","Courage does not mean never feeling afraid. It means recognizing fear and still choosing to do what matters. Sometimes courage is standing on a stage, but sometimes it is asking for help, speaking against unfair treatment, or beginning again after failure. I believe courage can look quiet and ordinary. A young girl who continues her education despite obstacles may demonstrate extraordinary bravery. I want to encourage people to recognize their own courage, even when their achievements are not celebrated publicly.","ភាពក្លាហានមិនមានន័យថាមិនដែលភ័យខ្លាចទេ។ វាមានន័យថាទទួលស្គាល់ការភ័យខ្លាច ហើយនៅតែជ្រើសរើសធ្វើអ្វីដែលសំខាន់។ ពេលខ្លះភាពក្លាហានគឺការឈរលើឆាក ប៉ុន្តែពេលខ្លះវាគឺការសុំជំនួយ ការនិយាយប្រឆាំងការប្រព្រឹត្តមិនយុត្តិធម៌ ឬការចាប់ផ្តើមឡើងវិញបន្ទាប់ពីបរាជ័យ។ នាងខ្ញុំជឿថាភាពក្លាហានអាចមានរូបរាងស្ងប់ស្ងាត់ និងសាមញ្ញ។ ក្មេងស្រីម្នាក់ដែលបន្តការសិក្សាទោះមានឧបសគ្គអាចបង្ហាញភាពក្លាហានដ៏អស្ចារ្យ។ នាងខ្ញុំចង់លើកទឹកចិត្តមនុស្សឱ្យទទួលស្គាល់ភាពក្លាហានរបស់ខ្លួន ទោះបីសមិទ្ធផលមិនត្រូវបានអបអរសាទរជាសាធារណៈក៏ដោយ។"],
+["Final Round","What message would you give to every young girl watching tonight?","តើអ្នកចង់ផ្តល់សារអ្វីដល់ក្មេងស្រីគ្រប់រូបដែលកំពុងទស្សនារាត្រីនេះ?","To every young girl watching tonight, I want you to remember that your circumstances do not define your future. You may face challenges that others cannot see, and your journey may take longer than expected. But your voice matters, your education matters, and your dreams deserve a chance. Do not compare your beginning with someone else's success. Seek support, keep learning, and celebrate every step forward. You do not have to become a beauty queen to be powerful. You already have the potential to make a difference.","ចំពោះក្មេងស្រីគ្រប់រូបដែលកំពុងទស្សនារាត្រីនេះ នាងខ្ញុំចង់ឱ្យអ្នកចងចាំថាស្ថានភាពជីវិតមិនកំណត់អនាគតរបស់អ្នកទេ។ អ្នកអាចប្រឈមបញ្ហាដែលអ្នកដទៃមើលមិនឃើញ ហើយដំណើររបស់អ្នកអាចយូរជាងការរំពឹងទុក។ ប៉ុន្តែសំឡេងរបស់អ្នកមានសារៈសំខាន់ ការអប់រំរបស់អ្នកមានសារៈសំខាន់ ហើយក្តីសុបិនរបស់អ្នកសមនឹងទទួលបានឱកាស។ កុំប្រៀបធៀបចំណុចចាប់ផ្តើមរបស់អ្នកជាមួយភាពជោគជ័យរបស់អ្នកដទៃ។ ចូរស្វែងរកការគាំទ្រ បន្តរៀន និងអបអររាល់ជំហានទៅមុខ។ អ្នកមិនចាំបាច់ក្លាយជាបវរកញ្ញាដើម្បីមានអំណាចទេ។ អ្នកមានសក្តានុពលក្នុងការបង្កើតការផ្លាស់ប្តូររួចហើយ។"],
+["Final Round","Why should you be Miss Universe 2026?","ហេតុអ្វីអ្នកគួរតែក្លាយជា Miss Universe 2026?","Thank you for the question. I believe I should be Miss Universe 2026 because I am ready to use this platform with purpose, humility, and determination. I come from a humble background, and I understand that many young people have dreams but lack the opportunities to pursue them. I want to advocate for girls' education and encourage women to believe in their abilities. I do not stand here claiming to be perfect. I stand here as someone who has learned from challenges and wants to serve others. For me, Miss Universe is not simply a woman who wears a crown. She is a woman who uses that crown to open doors for others. Tonight, I am ready to accept that responsibility. Thank you.","សូមអរគុណចំពោះសំណួរ។ នាងខ្ញុំជឿថានាងខ្ញុំគួរតែក្លាយជា Miss Universe 2026 ព្រោះនាងខ្ញុំត្រៀមខ្លួនប្រើវេទិកានេះដោយមានគោលបំណង ភាពរាបសា និងការតាំងចិត្ត។ នាងខ្ញុំមកពីគ្រួសារដែលមានជីវភាពខ្វះខាត ហើយយល់ថាយុវជនជាច្រើនមានក្តីសុបិន ប៉ុន្តែខ្វះឱកាសដើម្បីដើរតាមវា។ នាងខ្ញុំចង់លើកកម្ពស់ការអប់រំក្មេងស្រី និងលើកទឹកចិត្តស្ត្រីឱ្យជឿលើសមត្ថភាពរបស់ខ្លួន។ នាងខ្ញុំមិនឈរនៅទីនេះដើម្បីអះអាងថាខ្លួនល្អឥតខ្ចោះទេ។ នាងខ្ញុំឈរនៅទីនេះក្នុងនាមជាមនុស្សដែលបានរៀនពីបញ្ហាប្រឈម និងចង់បម្រើអ្នកដទៃ។ សម្រាប់នាងខ្ញុំ Miss Universe មិនមែនគ្រាន់តែជាស្ត្រីដែលពាក់មកុដទេ ប៉ុន្តែជាស្ត្រីដែលប្រើមកុដនោះដើម្បីបើកទ្វារឱកាសសម្រាប់អ្នកដទៃ។ នៅរាត្រីនេះ នាងខ្ញុំត្រៀមខ្លួនទទួលយកការទទួលខុសត្រូវនោះ។ សូមអរគុណ។"]
+
+];
+
+/* ===== DATA ===== */
+
+const questions = raw.map((r,i)=>({
+ id:i+1,
+ category:r[0],
+ enQ:r[1],
+ khQ:r[2],
+ enA:r[3],
+ khA:r[4]
+}));
+
+let language="en";
+let currentCategory="All";
+let favoritesOnly=false;
+let favorites=[];
+
+try{
+ const saved=JSON.parse(localStorage.getItem("queenFavorites")||"[]");
+ if(Array.isArray(saved))favorites=saved;
+}catch(e){favorites=[];}
+
+let interval=null;
+let remaining=30;
+
+function saveFavorites(){
+ try{
+  localStorage.setItem("queenFavorites",JSON.stringify(favorites));
+ }catch(e){
+  console.warn("Favorites could not be saved.");
+ }
+}
+
+function toggleFavorite(id){
+ if(favorites.includes(id)){
+  favorites=favorites.filter(x=>x!==id);
+ }else{
+  favorites.push(id);
+ }
+ saveFavorites();
+ renderQuestions();
+}
+
+function toggleLanguage(){
+ language=language==="en"?"kh":"en";
+ document.documentElement.lang=language==="en"?"en":"km";
+ renderQuestions();
+ if(currentPracticeId!==null)showPracticeQuestion();
+}
+
+function toggleDark(){
+ document.body.classList.toggle("dark");
+ try{
+  localStorage.setItem(
+   "queenDark",
+   document.body.classList.contains("dark")?"1":"0"
+  );
+ }catch(e){}
+}
+
+try{
+ if(localStorage.getItem("queenDark")==="1"){
+  document.body.classList.add("dark");
+ }
+}catch(e){}
+
+function showAll(){
+ favoritesOnly=false;
+ currentCategory="All";
+ document.getElementById("search").value="";
+ renderQuestions();
+ window.scrollTo({top:0,behavior:"smooth"});
+}
+
+function showFavorites(){
+ favoritesOnly=true;
+ currentCategory="All";
+ renderQuestions();
+ document.getElementById("questions").scrollIntoView();
+}
+
+function filterCategory(category){
+ currentCategory=category;
+ favoritesOnly=false;
+ renderQuestions();
+}
+
+function renderFilters(){
+ const categories=["All",...new Set(questions.map(q=>q.category))];
+ const container=document.getElementById("filters");
+ container.replaceChildren();
+
+ categories.forEach(category=>{
+  const btn=document.createElement("button");
+  btn.textContent=category;
+  if(!favoritesOnly&&category===currentCategory){
+   btn.classList.add("active");
+  }
+  btn.onclick=()=>filterCategory(category);
+  container.appendChild(btn);
+ });
+}
+
+function renderQuestions(){
+ const keyword=document.getElementById("search")
+  .value.toLowerCase().trim();
+
+ const filtered=questions.filter(q=>{
+  const searchable=[
+   q.enQ,q.khQ,q.enA,q.khA,q.category
+  ].join(" ").toLowerCase();
+
+  return searchable.includes(keyword)
+   &&(currentCategory==="All"||q.category===currentCategory)
+   &&(!favoritesOnly||favorites.includes(q.id));
+ });
+
+ const container=document.getElementById("questions");
+ container.replaceChildren();
+
+ if(filtered.length===0){
+  const p=document.createElement("p");
+  p.textContent=language==="en"
+   ?"No questions found."
+   :"រកមិនឃើញសំណួរទេ។";
+  container.appendChild(p);
+ }
+
+ filtered.forEach(q=>{
+  const card=document.createElement("article");
+  card.className="card";
+
+  const category=document.createElement("div");
+  category.className="category";
+  category.textContent="#"+q.id+" • "+q.category;
+
+  const title=document.createElement("h3");
+  title.textContent=language==="en"?q.enQ:q.khQ;
+
+  const answer=document.createElement("div");
+  answer.className="answer";
+  answer.textContent=language==="en"?q.enA:q.khA;
+
+  const actions=document.createElement("div");
+  actions.className="actions";
+
+  const favorite=document.createElement("button");
+  favorite.textContent=favorites.includes(q.id)
+   ?"❤️ Saved":"🤍 Favorite";
+  favorite.onclick=()=>toggleFavorite(q.id);
+
+  const copy=document.createElement("button");
+  copy.className="secondary";
+  copy.textContent="📋 Copy";
+
+  copy.onclick=async()=>{
+   const value=language==="en"?q.enA:q.khA;
+   try{
+    await navigator.clipboard.writeText(value);
+    copy.textContent="✓ Copied";
+   }catch(e){
+    alert("Please select the answer and copy it manually.");
+   }
+  };
+
+  const practice=document.createElement("button");
+  practice.className="gold";
+  practice.textContent="🎤 Practice";
+  practice.onclick=()=>{
+   currentPracticeId=q.id;
+   showPracticeQuestion();
+   resetTimer();
+   document.getElementById("practice").scrollIntoView();
+  };
+
+  actions.append(favorite,copy,practice);
+  card.append(category,title,answer,actions);
+  container.appendChild(card);
+ });
+
+ document.getElementById("total").textContent=questions.length;
+ document.getElementById("favoriteCount").textContent=
+  favorites.filter(id=>questions.some(q=>q.id===id)).length;
+ document.getElementById("shownCount").textContent=filtered.length;
+
+ renderFilters();
+}
+
+/* ===== PRACTICE TIMER ===== */
+
+let currentPracticeId=null;
+
+function showPracticeQuestion(){
+ const q=questions.find(x=>x.id===currentPracticeId);
+ if(!q)return;
+ document.getElementById("practiceQuestion").textContent=
+  language==="en"?q.enQ:q.khQ;
+}
+
+function formatTime(seconds){
+ const m=Math.floor(seconds/60);
+ const s=seconds%60;
+ return String(m).padStart(2,"0")+":"+String(s).padStart(2,"0");
+}
+
+function updateTimer(){
+ document.getElementById("timer").textContent=formatTime(remaining);
+}
+
+function resetTimer(){
+ clearInterval(interval);
+ interval=null;
+ remaining=Number(document.getElementById("duration").value);
+ document.getElementById("timerMessage").textContent="";
+ updateTimer();
+}
+
+function startTimer(){
+ if(interval!==null)return;
+ if(remaining<=0)resetTimer();
+
+ interval=setInterval(()=>{
+  remaining--;
+  updateTimer();
+
+  if(remaining<=0){
+   clearInterval(interval);
+   interval=null;
+   document.getElementById("timerMessage").textContent=
+    "👑 Time is up! Great job!";
+  }
+ },1000);
+}
+
+function newQuestion(){
+ const index=Math.floor(Math.random()*questions.length);
+ currentPracticeId=questions[index].id;
+ showPracticeQuestion();
+ resetTimer();
+}
+
+/* ===== START ===== */
+
+renderQuestions();
+resetTimer();
+
+console.log("Beauty Queen Academy loaded:",questions.length,"questions");
+
+</script>
+</body>
+</html>
